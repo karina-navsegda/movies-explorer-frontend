@@ -1,0 +1,6 @@
+.about__progress {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-bottom: 14px;
+}

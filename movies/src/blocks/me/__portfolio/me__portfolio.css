@@ -1,0 +1,8 @@
+.portfolio {
+  margin-bottom: 125px;
+}
+@media screen and (max-width: 320px) {
+    .portfolio {
+        margin-bottom: 51px;
+      }
+}

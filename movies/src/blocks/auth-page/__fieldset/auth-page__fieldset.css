@@ -1,0 +1,14 @@
+.auth-page__fieldset {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    padding: 0;
+    border: 0;
+    margin-bottom: 91px;
+}
+
+@media screen and (max-width: 320px) {
+    .auth-page__fieldset {
+        margin-bottom: 179px;
+      }
+}

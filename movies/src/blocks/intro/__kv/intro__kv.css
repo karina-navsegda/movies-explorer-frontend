@@ -1,0 +1,13 @@
+.intro__kv {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: 156px;
+
+}
+@media screen and (max-width: 768px) {
+    .intro__kv {
+        width: 248px;
+        height: 248px;
+      }
+}

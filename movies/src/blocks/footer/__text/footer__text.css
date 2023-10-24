@@ -1,0 +1,22 @@
+.footer__text {
+  color: #a0a0a0;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+  margin: 0 auto 20px;
+  align-self: center;
+}
+@media screen and (max-width: 320px) {
+    .footer__text {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 30px;
+      }
+}

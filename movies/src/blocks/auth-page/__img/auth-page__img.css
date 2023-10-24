@@ -1,0 +1,12 @@
+.auth-page__img {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .auth-page__img {
+     margin-bottom: 50px;
+
+      }
+}

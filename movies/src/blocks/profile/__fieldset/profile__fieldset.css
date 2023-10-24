@@ -1,0 +1,10 @@
+.profile__fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    margin-bottom: 220px;
+}
+
+
+

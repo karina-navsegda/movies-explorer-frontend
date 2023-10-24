@@ -1,0 +1,8 @@
+.me__title {
+  margin-top: 110px;
+}
+@media screen and (max-width: 768px) {
+    .me__title {
+        margin-top: 90px;
+      }
+}

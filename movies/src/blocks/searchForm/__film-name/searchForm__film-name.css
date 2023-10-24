@@ -1,0 +1,5 @@
+.searchForm__film-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+.portfolio__icon {
+    height: 60px;
+    width: 29px;
+    object-fit: contain;
+  }
+  @media screen and (max-width: 320px) {
+      .portfolio__icon {
+          width: 18px;
+          height: 28px;
+        }
+  }

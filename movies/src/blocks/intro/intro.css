@@ -1,0 +1,9 @@
+.intro {
+  background-color: #f3c1f8;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

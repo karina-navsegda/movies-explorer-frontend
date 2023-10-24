@@ -1,0 +1,23 @@
+.about__p {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  max-width: 550px;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-width: 768px) {
+    .about__p {
+        font-size: 14px;
+        line-height: 18px;
+      }
+}
+@media screen and (max-width: 320px) {
+    .about__p {
+        font-size: 11px;
+        line-height: 16px;
+      }
+}

@@ -1,0 +1,15 @@
+.moviesCardList__more-btn {
+  color: #000;
+text-align: center;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+background-color: #F9F9F9;
+border-radius: 6px;
+padding: 11px 147px 9px 147px;
+margin: 50px auto 80px;
+border: none;
+
+}

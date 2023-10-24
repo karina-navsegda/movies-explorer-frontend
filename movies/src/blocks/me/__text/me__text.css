@@ -1,0 +1,11 @@
+.me__text {
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+@media screen and (max-width: 768px) {
+    .me__text {
+        max-width: 364px;
+      }
+}

@@ -1,0 +1,11 @@
+.auth-page__logo-sec {
+    width: 100%;
+}
+
+@media screen and (max-width: 320px) {
+    .auth-page__logo-sec {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      }
+}

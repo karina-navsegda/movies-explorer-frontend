@@ -1,0 +1,27 @@
+.section__title {
+  color: #000;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin: 0 auto;
+  width: 100%;
+  border-bottom: #000 1px solid;
+  padding-bottom: 23px;
+}
+@media screen and (max-width: 768px) {
+    .section__title {
+        font-size: 22px;
+        line-height: normal;
+      }
+}
+@media screen and (max-width: 320px) {
+    .section__title {
+        padding-bottom: 28px;
+        line-height: 22px;
+        margin-top: 70px;
+        margin-bottom: 60px;
+      }
+}

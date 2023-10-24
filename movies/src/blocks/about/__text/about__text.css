@@ -1,0 +1,17 @@
+.about__text {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 768px) {
+    .about__text {
+        max-width: 319px;
+      }
+}
+@media screen and (max-width: 320px) {
+    .about__text {
+        margin-bottom: 56px;
+      }
+}
+.about__text:last-child {
+  margin-bottom: 0;
+}

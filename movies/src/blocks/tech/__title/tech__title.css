@@ -1,0 +1,8 @@
+.tech__title {
+  margin-top: 100px;
+}
+@media screen and (max-width: 768px) {
+    .tech__title {
+        margin-top: 90px;
+      }
+}

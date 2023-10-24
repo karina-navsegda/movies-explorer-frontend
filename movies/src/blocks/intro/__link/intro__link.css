@@ -1,0 +1,20 @@
+.intro__link {
+  color: #fff;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 123.077% */
+  text-decoration-line: underline;
+  margin-right: 40px;
+}
+@media screen and (max-width: 320px) {
+    .intro__link {
+        font-size: 11px;
+        line-height: 16px;
+        margin-right: 24px;
+      }
+}
+.intro__link:last-child {
+  margin-right: 0;
+}

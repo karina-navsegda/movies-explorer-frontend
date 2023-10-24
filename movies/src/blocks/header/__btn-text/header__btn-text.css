@@ -1,0 +1,13 @@
+.header__btn-text {
+  color: #000;
+text-align: right;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px; /* 128.571% */
+background-color: transparent;
+border: none;
+margin-right: 20px;
+padding: 0;
+}

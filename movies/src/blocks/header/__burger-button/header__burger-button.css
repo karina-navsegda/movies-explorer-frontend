@@ -1,0 +1,11 @@
+.header__burger-button {
+    background-color: transparent;
+    border: none;
+}
+
+@media screen and (max-width: 320px) {
+    .header__burger-button {
+height: 43px;
+   width: 40px;
+      }
+  }

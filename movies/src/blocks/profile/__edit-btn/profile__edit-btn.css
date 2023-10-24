@@ -1,0 +1,23 @@
+.profile__edit-btn {
+    color: #000;
+text-align: center;
+font-family: Inter;
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom: 16px;
+border: none;
+background-color: transparent;
+padding: 0;
+}
+
+.profile__edit-btn:last-of-type {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__edit-btn {
+        font-size: 12px;
+      }
+  }

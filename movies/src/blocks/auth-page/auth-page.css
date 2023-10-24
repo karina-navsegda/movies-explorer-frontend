@@ -1,0 +1,19 @@
+.auth-page {
+    display: flex;
+    padding: 70px 0 70px;
+    flex-direction: column;
+    max-width: 396px;
+    margin: 0 auto; 
+}
+
+@media screen and (max-width: 768px) {
+    .auth-page {
+        padding: 232px 30px 232px;
+      }
+}
+
+@media screen and (max-width: 768px) {
+    .auth-page {
+        padding: 56px 30px 30px;
+      }
+}

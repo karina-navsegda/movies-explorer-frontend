@@ -1,0 +1,16 @@
+.about__timeline {
+  max-width: 100%;
+  height: 36px;
+  background: #f2f2f2;
+  margin-bottom: 14px;
+}
+@media screen and (max-width: 768px) {
+    .about__timeline {
+        margin-bottom: 14px;
+      }
+}
+@media screen and (max-width: 320px) {
+    .about__timeline {
+        margin-bottom: 10px;
+      }
+}
