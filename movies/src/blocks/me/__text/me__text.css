@@ -7,5 +7,13 @@
 @media screen and (max-width: 768px) {
     .me__text {
         max-width: 364px;
+        margin-right: 20px;
       }
+}
+
+@media screen and (max-width: 320px) {
+  .me__text {
+      max-width: 364px;
+      margin-right: 0;
+    }
 }

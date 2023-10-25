@@ -19,5 +19,6 @@
 @media screen and (max-width: 320px) {
   .nav__item {
     font-size: 18px;
+    margin-bottom: 24px;
   }
 }

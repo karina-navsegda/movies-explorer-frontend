@@ -6,13 +6,14 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.88px;
-  margin: 0 auto;
+  margin: 110px auto;
   width: 100%;
   border-bottom: #000 1px solid;
   padding-bottom: 23px;
 }
 @media screen and (max-width: 768px) {
     .section__title {
+      margin-top: 90px;
         font-size: 22px;
         line-height: normal;
       }
@@ -23,5 +24,7 @@
         line-height: 22px;
         margin-top: 70px;
         margin-bottom: 60px;
+        font-size: 18px;
+        letter-spacing: -0.72px;
       }
 }

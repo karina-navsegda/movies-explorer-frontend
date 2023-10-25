@@ -5,8 +5,8 @@ function Footer() {
         <div className="footer__content">
           <p className="footer__p">© 2020</p>
           <div className="footer__links">
-            <a className="footer__link footer__p">Яндекс.Практикум</a>
-            <a className="footer__link footer__p">Github</a>
+            <a className="footer__p footer__link">Яндекс.Практикум</a>
+            <a className="footer__p footer__link">Github</a>
           </div>
         </div>
       </footer>

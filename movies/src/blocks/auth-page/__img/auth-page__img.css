@@ -6,6 +6,13 @@
 
 @media screen and (max-width: 768px) {
     .auth-page__img {
+     margin-bottom: 40px;
+
+      }
+}
+
+@media screen and (max-width: 320px) {
+    .auth-page__img {
      margin-bottom: 50px;
 
       }

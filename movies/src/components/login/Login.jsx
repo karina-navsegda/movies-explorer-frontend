@@ -8,7 +8,7 @@ export function Login() {
         <section className="auth-page">
         <div className="auth-page__logo-sec">
             <Link to="/" className='auth-page__logo'>
-                <img className="auth-page__img" src={logo} alt="logo"/>
+                <img className="auth-page__img" src={logo} alt="логотип"/>
                 </Link>
                 <h2 className="auth-page__title">Рады видеть!</h2>
                 </div>

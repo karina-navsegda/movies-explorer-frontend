@@ -8,13 +8,16 @@
 @media screen and (max-width: 768px) {
     .me__photo {
         height: 307px;
-        width: 255px;
+        max-width: 255px;
+        width: 50%;
       }
 }
+
+
 @media screen and (max-width: 320px) {
-    .me__photo {
-        height: 352px;
-        width: 292px;
-        margin-bottom: 40px;
-      }
+  .me__photo {
+      height: 352px;
+      width: 292px;
+      margin-bottom: 40px;
+    }
 }

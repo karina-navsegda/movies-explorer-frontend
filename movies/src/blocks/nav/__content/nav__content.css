@@ -7,13 +7,15 @@
   background-color: #fff;
   z-index: 1;
   display: flex;
-justify-content: center;  
+justify-content: flex-start;  
 max-width: 80%;
+flex-direction: column;
+align-items: center;
 }
 
 @media screen and (max-width: 320px) {
     .nav__content{
-   width: 100%;
+   max-width: 100%;
    
       }
   }

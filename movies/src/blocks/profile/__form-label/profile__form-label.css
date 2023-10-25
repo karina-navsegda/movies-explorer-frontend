@@ -20,9 +20,11 @@ margin-bottom: 17px;
   border-bottom: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 320px) {
   .profile__form-label {
       width: 260px;
     }
 }
+
+
 

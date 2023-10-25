@@ -10,9 +10,9 @@
   background: #F9F9F9;
   padding: 6px 7px;
   border: none;
-  color: transparent;
   background-color: #FF4062;
   background-image: url(../../../images/galochka.svg);
   background-repeat: no-repeat;
   background-position: center;
+  text-indent: -999em;
 }

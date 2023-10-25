@@ -59,9 +59,9 @@
 
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__content/footer__content.css);
+@import url(./blocks/footer/__p/footer__p.css);
 @import url(./blocks/footer/__link/footer__link.css);
 @import url(./blocks/footer/__links/footer__links.css);
-@import url(./blocks/footer/__p/footer__p.css);
 @import url(./blocks/footer/__text/footer__text.css);
 
 @import url(./blocks/about/about.css);
@@ -83,7 +83,7 @@
 
 @import url(./blocks/portfolio/portfolio.css);
 @import url(./blocks/portfolio/__heading/portfolio__heading.css);
-@import url(./blocks/portfolio/__icon/portfolio__icon.css);
+@import url(./blocks/portfolio/__button/portfolio__button.css);
 @import url(./blocks/portfolio/__link-name/portfolio__link-name.css);
 @import url(./blocks/portfolio/__link/portfolio__link.css);
 @import url(./blocks/portfolio/__list/portfolio__list.css);
@@ -131,3 +131,10 @@
 @import url(./blocks/nav/nav.css);
 @import url(./blocks/nav/__close/nav__close.css);
 @import url(./blocks/nav/__close-icon/nav__close-icon.css);
+
+@import url(./blocks/error/__btn/error__btn.css);
+@import url(./blocks/error/__p/error__p.css);
+@import url(./blocks/error/__text/error__text.css);
+@import url(./blocks/error/__title/error__title.css);
+@import url(./blocks/error/error.css);
+

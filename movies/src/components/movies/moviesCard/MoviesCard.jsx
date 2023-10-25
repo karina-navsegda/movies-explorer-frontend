@@ -13,9 +13,15 @@ function MoviesCard({ movieCard }) {
     <div className="moviesCardList__card">
       <div className="moviesCardList__img-block">
         <img className="moviesCardList__img" src={movieCard.image} alt={movieCard.nameRu} />
-        <button className={saved ? "moviesCardList__btn-save" : "moviesCardList__btn-saved"} onClick={handleSave}>
-          Сохранить
-        </button>
+        {saved ? (
+  <button className="moviesCardList__btn-saved" onClick={handleSave}>
+  </button>
+) : (
+  <button className="moviesCardList__btn-save" onClick={handleSave}>
+    Сохранить
+  </button>
+)}
+
       </div>
       <div className="moviesCardList__text">
         <p className="moviesCardList__name">{movieCard.nameRu}</p>

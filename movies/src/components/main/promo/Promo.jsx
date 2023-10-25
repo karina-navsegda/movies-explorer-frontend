@@ -8,9 +8,9 @@ function Promo() {
       Учебный проект студента факультета Веб-разработки.
     </h1>
     <nav className="intro__nav">
-      <a className="intro__link">О проекте</a>
-      <a className="intro__link">Технологии</a>
-      <a className="intro__link">Студент</a>
+      <a className="intro__link" href='#about'>О проекте</a>
+      <a className="intro__link" href='#tech'>Технологии</a>
+      <a className="intro__link" href='#me'>Студент</a>
     </nav>
   </section>
   )

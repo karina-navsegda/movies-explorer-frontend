@@ -1,13 +1,14 @@
 .tech__list {
   display: flex;
   flex-direction: row;
+  margin: 0;
   margin-bottom: 100px;
   justify-content: center;
   padding: 0;
 }
 @media screen and (max-width: 768px) {
     .tech__list {
-        margin-bottom: 90px;
+        margin-bottom: 80px;
         flex-wrap: wrap;
       }
 }

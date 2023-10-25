@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Error() {
     return (
        <section className="error">
@@ -5,7 +7,7 @@ export function Error() {
             <h2 className="error__title">404</h2>
             <p className="error__p">Страница не найдена</p>
         </div>
-        <button className="error__btn">Назад</button>
+        <Link to="/" className="error__btn">Назад</Link>
        </section>
       
     )

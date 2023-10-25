@@ -5,8 +5,16 @@
 @media screen and (max-width: 768px) {
     .about__text {
         max-width: 319px;
+        margin-right: 20px;
       }
 }
+
+@media screen and (max-width: 768px) {
+  .about__text:last-of-type {
+      margin-right: 0;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .about__text {
         margin-bottom: 56px;

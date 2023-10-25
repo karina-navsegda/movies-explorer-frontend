@@ -12,7 +12,7 @@
       }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 320px) {
     .auth-page {
         padding: 56px 30px 30px;
       }
