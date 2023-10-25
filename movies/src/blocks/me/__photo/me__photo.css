@@ -9,7 +9,7 @@
     .me__photo {
         height: 307px;
         max-width: 255px;
-        width: 50%;
+        min-width: 40%;
       }
 }
 
@@ -17,7 +17,9 @@
 @media screen and (max-width: 320px) {
   .me__photo {
       height: 352px;
-      width: 292px;
+      width: 100%;
       margin-bottom: 40px;
+      min-width: none;
+      max-width: none;
     }
 }

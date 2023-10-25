@@ -51,12 +51,16 @@ function Profile() {
               <span className="form-error email-error" />
             </fieldset>
             <div className="profile__btns">
-              <button className="profile__edit-btn" onClick={handleEditClick}>
+              <button className={`profile__edit-btn ${isEditing ? "profile__edit-btn_save" : ""}`} onClick={handleEditClick}>
                 {isEditing ? "Сохранить" : "Редактировать"}
               </button>
-              <button className="profile__edit-btn profile__edit-btn_red">
-                Выйти из аккаунта
-              </button>
+           
+              {isEditing ? null : (
+  <button className="profile__edit-btn profile__edit-btn_red">
+    Выйти из аккаунта
+  </button>
+)}
+
             </div>
           </form>
         </section>

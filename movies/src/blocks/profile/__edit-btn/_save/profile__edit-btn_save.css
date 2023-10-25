@@ -1,4 +1,4 @@
-.auth-page__form-btn {
+.profile__edit-btn_save {
     width: 100%;
     color: #FFF;
 text-align: center;
@@ -8,30 +8,24 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 border-radius: 3px;
-background: #000;
+background: #3456F3;
 padding: 13px 0 15px;
 border: none;
 margin-bottom: 16px;
 text-decoration: none;
-cursor: pointer;
+width: 410px;
 }
 
-
 @media screen and (max-width: 768px) {
-    .auth-page__form-btn {
+    .profile__edit-btn_save {
        font-size: 14px;
-       
       }
 }
 
 
 @media screen and (max-width: 320px) {
-    .auth-page__form-btn {
+    .profile__edit-btn_save {
        font-size: 12px;
        
       }
-}
-
-.auth-page__form-btn:hover {
-    opacity: 0.7;
 }

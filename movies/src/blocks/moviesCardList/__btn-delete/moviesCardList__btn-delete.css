@@ -1,4 +1,5 @@
-.moviesCardList__btn-saved {
+
+.moviesCardList__btn-delete {
     position: absolute;
     top: 14px;
     right: 14px;
@@ -10,8 +11,8 @@
   background: #F9F9F9;
   padding: 6px 7px;
   border: none;
-  background-color: #FF4062;
-  background-image: url(../../../images/galochka.svg);
+  background-color: #F9F9F9;
+  background-image: url(../../../images/cross.svg);
   background-repeat: no-repeat;
   background-position: center;
   text-indent: -999em;
