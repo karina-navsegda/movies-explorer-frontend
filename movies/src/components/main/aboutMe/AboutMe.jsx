@@ -1,8 +1,9 @@
 import me from "../../../images/me.jpg";
+import { Link } from "react-router-dom";
 function AboutMe() {
   return (
     <section className="me" id="me">
-      <h2 className="me__title section__title">Студент</h2>
+      <h2 className="me__title">Студент</h2>
       <div className="me__profile">
         <div className="me__text">
           <div className="me__info">
@@ -17,7 +18,7 @@ function AboutMe() {
               постоянной работы.
             </p>
           </div>
-          <p className="me__disclaimer">Github</p>
+          <Link to="https://github.com/karina-navsegda" className="me__disclaimer">Github</Link>
         </div>
         <img className="me__photo" src={me} alt="Тут моя фотография" />
       </div>

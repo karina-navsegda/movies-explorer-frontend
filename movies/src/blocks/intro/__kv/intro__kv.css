@@ -13,3 +13,12 @@
         margin-bottom: 66px;
       }
 }
+
+@media screen and (max-width: 320px) {
+  .intro__kv {
+      width: 248px;
+      height: 248px;
+      top: 142px;
+      margin-bottom: 66px;
+    }
+}

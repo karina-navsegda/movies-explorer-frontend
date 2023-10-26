@@ -1,19 +1,17 @@
-.about__timeline_black {
-  background-color: #000;
-  width: 20%;
-  height: 36px;
+.about__timeline-front {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 80%;
 }
 @media screen and (max-width: 768px) {
-    .about__timeline_black {
-        width: 140px;
+    .about__timeline-front {
+        width: 528px;
       }
 }
 @media screen and (max-width: 320px) {
-    .about__timeline_black {
-        width: 100px;
+    .about__timeline-front {
+        width: 184px;
       }
 }

@@ -10,7 +10,7 @@ import { Error } from "./components/error/Error";
 
 function App() {
   return (
-    <div className="app">
+    <div className="page">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />

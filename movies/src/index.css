@@ -2,9 +2,6 @@
 @import url(./vendor/fonts/fonts.css);
 
 @import url(./blocks/page/page.css);
-@import url(./blocks/page/__container/page__container.css);
-
-@import url(./blocks/section/__title/section__title.css);
 
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__acc-img/header__acc-img.css);
@@ -78,10 +75,10 @@
 @import url(./blocks/about/__timeline-text/about__timeline-text.css);
 @import url(./blocks/about/__timeline-text/_black/about__timeline-text_black.css);
 @import url(./blocks/about/__timeline/about__timeline.css);
-@import url(./blocks/about/__timeline/_back/about__timeline_back.css);
-@import url(./blocks/about/__timeline/_black/about__timeline_black.css);
-@import url(./blocks/about/__timeline/_clear/about__timeline_clear.css);
-@import url(./blocks/about/__timeline/_front/about__timeline_front.css);
+@import url(./blocks/about/__timeline-back/about__timeline_back.css);
+@import url(./blocks/about/__timeline-black/about__timeline-black.css);
+@import url(./blocks/about/__timeline-clear/about__timeline_clear.css);
+@import url(./blocks/about/__timeline-front/about__timeline_front.css);
 
 @import url(./blocks/portfolio/portfolio.css);
 @import url(./blocks/portfolio/__heading/portfolio__heading.css);

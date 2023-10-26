@@ -8,15 +8,18 @@ font-weight: 500;
 line-height: normal;
 background-color: #F9F9F9;
 border-radius: 6px;
-padding: 11px 147px 9px 147px;
+padding: 11px 0 9px ;
 margin: 50px auto 80px;
 border: none;
 cursor: pointer;
+max-width: 90%;
+width: 320px;
 }
 
 @media screen and (max-width: 320px) {
   .moviesCardList__more-btn {
-  padding: 12px 108px 9px;
+  width: 240px;
+  padding: 11px 0;
     }
 }
 

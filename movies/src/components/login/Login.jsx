@@ -4,7 +4,6 @@ import logo from "../../images/logo.svg"
 export function Login() {
     const location = useLocation();
     return (
-        <main className="main">
         <section className="auth-page">
         <div className="auth-page__logo-sec">
             <Link to="/" className='auth-page__logo'>
@@ -50,7 +49,6 @@ export function Login() {
                     <Link to='/signup' className="auth-page__btn">Регистрация</Link>
                 </div>
         </section>
-    </main>
     )
     
 }
