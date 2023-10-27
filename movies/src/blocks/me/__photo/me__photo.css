@@ -1,0 +1,25 @@
+.me__photo {
+  height: 327px;
+  width: 270px;
+  border-radius: 10px;
+  object-fit: cover;
+
+}
+@media screen and (max-width: 768px) {
+    .me__photo {
+        height: 307px;
+        max-width: 255px;
+        min-width: 40%;
+      }
+}
+
+
+@media screen and (max-width: 520px) {
+  .me__photo {
+      height: 352px;
+      width: 100%;
+      margin-bottom: 40px;
+      min-width: 0px;
+      max-width: none;
+    }
+}

@@ -1,0 +1,21 @@
+.searchForm__search-btn {
+  border-radius: 48px;
+background: #000;
+color: #FFF;
+text-align: center;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Inter;
+font-size: 11px;
+font-style: normal;
+font-weight: 500;
+line-height: 18px; /* 163.636% */
+border: none;
+height: 34px;
+width: 58px;
+padding: 0;
+cursor: pointer;
+}
+
+.searchForm__search-btn:hover {
+  opacity: 0.7;
+}

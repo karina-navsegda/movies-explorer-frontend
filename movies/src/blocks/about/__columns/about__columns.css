@@ -1,0 +1,17 @@
+.about__columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 110px;
+}
+@media screen and (max-width: 768px) {
+    .about__columns {
+        margin-bottom: 93px;
+      }
+}
+@media screen and (max-width: 320px) {
+    .about__columns {
+        flex-direction: column;
+        margin-bottom: 60px;
+      }
+}

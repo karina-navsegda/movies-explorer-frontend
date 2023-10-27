@@ -1,0 +1,24 @@
+.intro__kv {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: 82px;
+
+}
+@media screen and (max-width: 768px) {
+    .intro__kv {
+        width: 248px;
+        height: 248px;
+        top: auto;
+        margin-bottom: 66px;
+      }
+}
+
+@media screen and (max-width: 320px) {
+  .intro__kv {
+      width: 248px;
+      height: 248px;
+      top: 142px;
+      margin-bottom: 66px;
+    }
+}

@@ -1,0 +1,11 @@
+.searchForm__search-icon {
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  object-fit: none;
+}
+
+@media screen and (max-width: 520px) {
+  .searchForm__search-icon {
+display: none;    }
+}

@@ -1,0 +1,5 @@
+.auth-page__btns {
+    display: flex;
+    align-items: center;
+    align-self: center;
+}

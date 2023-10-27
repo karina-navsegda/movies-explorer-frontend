@@ -1,0 +1,19 @@
+.about__timeline-text {
+  color: #fff;
+  color: #fff;
+  text-align: center;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-width: 320px) {
+    .about__timeline-text {
+        font-size: 11px;
+        line-height: normal;
+      }
+}

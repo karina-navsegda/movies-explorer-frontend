@@ -1,0 +1,19 @@
+.auth-page__p {
+    color: #A0A0A0;
+text-align: center;
+font-family: 'Inter', 'Arial', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin: 0;
+margin-right: 6px;
+}
+
+@media screen and (max-width: 768px) {
+    .auth-page__p {
+       margin-right: 7px;
+       font-size: 12px;
+       
+      }
+}

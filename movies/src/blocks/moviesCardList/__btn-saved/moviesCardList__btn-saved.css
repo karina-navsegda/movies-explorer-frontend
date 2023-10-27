@@ -1,0 +1,23 @@
+.moviesCardList__btn-saved {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 21px;
+    height: 21px;
+    justify-content: center;
+    align-items: center;
+  border-radius: 30px;
+  background: #F9F9F9;
+  padding: 6px 7px;
+  border: none;
+  background-color: #FF4062;
+  background-image: url(../../../images/galochka.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -999em;
+  cursor: pointer;
+}
+
+.moviesCardList__btn-saved:hover {
+  opacity: 0.7;
+}

@@ -1,0 +1,19 @@
+.searchForm__name {
+  color: #A0A0A0;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 111.111% */
+border: none;
+width: 60%;
+}
+
+@media screen and (max-width: 520px) {
+  .searchForm__name {
+ font-size: 14px;
+ line-height: 20px;
+ width: 60px;
+    }
+}
