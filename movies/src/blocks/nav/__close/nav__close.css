@@ -8,3 +8,7 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.nav__close:hover {
+  opacity: 0.7;
+}

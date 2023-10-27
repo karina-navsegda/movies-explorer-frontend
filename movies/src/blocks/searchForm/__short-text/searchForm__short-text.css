@@ -7,7 +7,7 @@ font-weight: 400;
 line-height: 18px; /* 138.462% */
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
   .searchForm__short-text {
 font-size: 11px;
     }

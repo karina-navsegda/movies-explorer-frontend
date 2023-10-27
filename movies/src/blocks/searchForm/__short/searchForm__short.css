@@ -4,7 +4,13 @@
   height: 40px;
 }
 
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 800px) {
+  .searchForm__short {
+margin: 0 auto;   }
+}
+
+@media screen and (max-width: 520px) {
   .searchForm__short {
 height: 18px;    }
 }

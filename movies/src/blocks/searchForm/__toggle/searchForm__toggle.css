@@ -30,17 +30,22 @@
     transform: translateX(20px);
   } 
   
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 800px) {
     .searchForm__toggle {
 height: 14px;
 width: 34px;
-margin-left: 0;
 }
   }
 
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 800px) {
     .searchForm__toggle::before {
 width: 10px;
 height: 10px;
       }
+  }
+
+  @media screen and (max-width: 520px) {
+    .searchForm__toggle {
+margin-left: 0;
+}
   }

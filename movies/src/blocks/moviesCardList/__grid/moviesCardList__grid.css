@@ -6,7 +6,7 @@
   row-gap: 58px;
   column-gap: 30px;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 26px;
 }
 @media screen and (max-width: 768px) {
     .moviesCardList__grid {
@@ -15,9 +15,10 @@
       }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
   .moviesCardList__grid {
     grid-template-columns: 1fr;
     row-gap: 36px;
+    margin: 0 auto;
     }
 }

@@ -12,7 +12,7 @@
       }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
   .me__profile {
       flex-direction: column-reverse;
       margin-top: 60px;

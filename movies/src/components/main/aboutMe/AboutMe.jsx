@@ -18,7 +18,7 @@ function AboutMe() {
               постоянной работы.
             </p>
           </div>
-          <Link to="https://github.com/karina-navsegda" className="me__disclaimer">Github</Link>
+          <Link to="https://github.com/karina-navsegda" className="me__disclaimer" target="_blank">Github</Link>
         </div>
         <img className="me__photo" src={me} alt="Тут моя фотография" />
       </div>

@@ -2,4 +2,17 @@
   position: relative;
   margin-bottom: 14px;
   border-radius: 6px;
+max-height: 201px;
+}
+
+@media screen and (max-width: 768px) {
+  .moviesCardList__img-block {
+margin-bottom: 25px;  
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .moviesCardList__img-block {
+margin-bottom: 16px;  
+  }
 }

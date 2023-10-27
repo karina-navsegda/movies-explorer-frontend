@@ -1,8 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg"
 
 export function Login() {
-    const location = useLocation();
     return (
         <section className="auth-page">
         <div className="auth-page__logo-sec">
@@ -42,7 +41,7 @@ export function Login() {
                    <span className="form-error register-password-error"/> 
                   
                 </fieldset>
-                <Link to='/movies' className="auth-page__form-btn" type="submit">Войти</Link>
+                <Link to='/movies' className="auth-page__form-btn">Войти</Link>
                 </form>
                 <div className="auth-page__btns">
                     <p className="auth-page__p">Ещё не зарегистрированы?</p>

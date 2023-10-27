@@ -5,7 +5,7 @@
   object-fit: none;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
   .searchForm__search-icon {
 display: none;    }
 }

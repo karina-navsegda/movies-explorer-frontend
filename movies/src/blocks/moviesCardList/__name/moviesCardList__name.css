@@ -7,3 +7,9 @@ font-weight: 500;
 line-height: normal;
 margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .moviesCardList__name {
+margin-bottom: 12px;  
+  }
+}
