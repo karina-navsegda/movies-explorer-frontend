@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import profile from "../../images/profile.svg";
 
-function Header() {
+function Header({isLogged}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
@@ -37,13 +37,9 @@ function Header() {
   };
 
   return (
-    <header
-      className={`header ${
-        location.pathname === "/" ? "header_pink" : "header_white"
-      }`}
-    >
+    <header className={`header ${location.pathname === "/" ? "header_pink" : "header_white"}`}>
       <Link to="/">
-        <img className="header__logo" alt="логотип" src={logo} />{" "}
+        <img className="header__logo" alt="логотип" src={logo} />
       </Link>
       {isMobile ? (
         <div className="header__burger-menu">
@@ -84,22 +80,36 @@ function Header() {
             </section>
           )}
         </div>
-      ) : (
+      )  : (
         <div className="header__btns">
-          <Link to="/movies" className="header__btn-text">
-            Фильмы
-          </Link>
-          <Link to="/saved-movies" className="header__btn-text">
-            Сохраненные фильмы
-          </Link>
-          <Link to="/profile" className="header__btn-acc">
-            Аккаунт{" "}
-            <img className="header__acc-img" src={profile} alt="аккаунт" />
-          </Link>
+          {isLogged ? (
+            <>
+              <Link to="/movies" className="header__btn-text">
+                Фильмы
+              </Link>
+              <Link to="/saved-movies" className="header__btn-text">
+                Сохраненные фильмы
+              </Link>
+              <Link to="/profile" className="header__btn-acc">
+                Аккаунт
+                <img className="header__acc-img" src={profile} alt="аккаунт" />
+              </Link>
+            </>
+          ) : (
+            <>
+            <Link to="/signin" className="header__btn-text">
+              Регистрация
+            </Link>
+                <Link to="/signin" className="header__btn-black">
+                Войти
+              </Link>
+              </>
+          )}
         </div>
       )}
     </header>
   );
+  
 }
 
 export default Header;

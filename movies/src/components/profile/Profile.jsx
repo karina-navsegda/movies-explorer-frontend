@@ -1,10 +1,35 @@
-
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import Header from "../header/Header";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Profile() {
+function Profile({ onUpdateUser, logOut }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const currentUser = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    setName(currentUser.name);
+    setEmail(currentUser.email);
+  }, [currentUser]);
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onUpdateUser({
+      name,
+      email,
+    });
+  }
+
   const [isEditing, setIsEditing] = useState(false);
-
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
@@ -14,22 +39,23 @@ function Profile() {
       <Header />
       <main className="main">
         <section className="profile">
-          <form className="profile__form" name="edit__form" method="post">
+          <form className="profile__form" name="edit__form" method="post" onSubmit={handleSubmit}>
             <h2 className="profile__title">Привет, Карина!</h2>
             <fieldset className="profile__fieldset">
               <label className="profile__form-label">
                 <span className="profile__input-heading">Имя</span>
                 <input
-                  type="text"
+                  type="name"
                   className="profile__input profile__input_type_name"
                   placeholder="Карина"
-                  defaultValue=""
                   name="edit-name"
                   required=""
                   minLength={2}
                   maxLength={40}
                   id="name"
                   disabled={!isEditing}
+                  onChange={handleNameChange}
+                  value={name || ''} 
                 />
               </label>
               <span className="form-error name-error" />
@@ -39,28 +65,33 @@ function Profile() {
                   type="email"
                   className="profile__input profile__input_type_email"
                   placeholder="pochta@yandex.ru"
-                  defaultValue=""
                   name="edit-email"
                   required=""
                   minLength={2}
                   maxLength={40}
                   id="email"
                   disabled={!isEditing}
+                  onChange={handleEmailChange}
+                  value={email || ''} 
                 />
               </label>
               <span className="form-error email-error" />
             </fieldset>
             <div className="profile__btns">
-              <button className={`profile__edit-btn ${isEditing ? "profile__edit-btn_save" : ""}`} onClick={handleEditClick}>
+              <button
+                className={`profile__edit-btn ${
+                  isEditing ? "profile__edit-btn_save" : ""
+                }`}
+                onClick={handleEditClick}
+              >
                 {isEditing ? "Сохранить" : "Редактировать"}
               </button>
-           
-              {isEditing ? null : (
-  <button className="profile__edit-btn profile__edit-btn_red">
-    Выйти из аккаунта
-  </button>
-)}
 
+              {isEditing ? null : (
+                <button className="profile__edit-btn profile__edit-btn_red" type="submit" onClick={logOut}>
+                  Выйти из аккаунта
+                </button>
+              )}
             </div>
           </form>
         </section>
@@ -70,4 +101,3 @@ function Profile() {
 }
 
 export default Profile;
-

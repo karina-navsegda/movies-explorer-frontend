@@ -6,10 +6,10 @@ import Portfolio from "./portfolio/Portfolio";
 import Promo from "./promo/Promo";
 import Techs from "./techs/Techs";
 
- function Main() {
+ function Main({isLogged}) {
     return (
         <>
-        <Header/>
+        <Header isLogged={isLogged}/>
         <main className="main">
             <Promo/>
             
