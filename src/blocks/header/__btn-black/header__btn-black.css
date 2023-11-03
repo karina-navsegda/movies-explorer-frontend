@@ -21,6 +21,6 @@
       }
 }
 
-.header__btn-black {
+.header__btn-black:hover {
   opacity: 0.7;
 }
