@@ -110,7 +110,7 @@ class ApiMain {
 }
 
 const apiMain = new ApiMain({
-  baseUrl: "api.diplomaslaay.nomoredomainsrocks.ru",
+  baseUrl: "https://api.diplomaslaay.nomoredomainsrocks.ru",
   headers: {
     "Content-Type": "application/json",
   },
