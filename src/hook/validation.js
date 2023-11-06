@@ -24,7 +24,6 @@ export default function useFormValidation() {
     })
     setIsValid(form.checkValidity())
   }
-
   const setValue = useCallback((name, value) => {
     setValues((oldValues) => {
       return { ...oldValues, [name]: value }

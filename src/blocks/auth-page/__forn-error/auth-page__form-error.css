@@ -1,0 +1,9 @@
+.auth-page__form-error {
+    color: #FF004C;
+text-align: center;
+font-family: Inter;
+font-size: 11px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}

@@ -14,6 +14,10 @@ function Movies({ savedMovies, saveMovie, isLogged }) {
   const [isCheck, setIsCheck] = useState(false);
   const [firstEntrance, setFirstEntrance] = useState(true);
 
+  const handleSearchMovie = (movie) => {
+    setSearchedMovie(movie);
+  };
+
   const filter = useCallback((search, isCheck, movies) => {
     setSearchedMovie(search);
     localStorage.setItem("movie", JSON.stringify(search));
@@ -75,11 +79,11 @@ function Movies({ savedMovies, saveMovie, isLogged }) {
         <SearchForm
           isCheck={isCheck}
           searchMovies={searchMovies}
-          searchedMovie={searchedMovie}
           firstEntrance={firstEntrance}
           movies={allMovies}
           filter={filter}
           setIsCheck={setIsCheck}
+          searchedMovie={handleSearchMovie}
         />
         <MoviesCardList
           movies={filteredMovies}

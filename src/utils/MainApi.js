@@ -109,11 +109,12 @@ class ApiMain {
   }
 }
 
-const apiMain = new ApiMain({
+ const apiMain = new ApiMain({
   baseUrl: "https://api.diplomaslaay.nomoredomainsrocks.ru",
   headers: {
     "Content-Type": "application/json",
   },
-});
+}); 
+
 
 export default apiMain;

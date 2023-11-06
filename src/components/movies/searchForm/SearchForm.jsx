@@ -44,30 +44,46 @@ function SearchForm({isCheck, searchedMovie, searchMovies, setIsError, firstEntr
     }
   }
 
-
   return (
     <section className="searchForm">
       <div className="searchForm__line">
         <form className="searchForm__form" onSubmit={onSubmit}>
           <div className="searchForm__search-stroke">
             <div className="searchForm__film-name">
-              <img className="searchForm__search-icon" src={searchIcon} alt="иконка" />
-              <input className="searchForm__name" type="text" placeholder="Фильм" name="search-film" id="film" required onChange={(evt) => {
-                handleChange(evt)
-    
-              }}/>
+              <img
+                className="searchForm__search-icon"
+                src={searchIcon}
+                alt="иконка"
+              />
+              <input
+                className="searchForm__name"
+                type="text"
+                placeholder="Фильм"
+                name="search-film"
+                id="film"
+                required
+              />
             </div>
-            <button className="searchForm__search-btn" type='submit'>Найти</button>
+            <button className="searchForm__search-btn" type="submit">
+              Найти
+            </button>
           </div>
           <div className="searchForm__short">
-          <button className={`searchForm__toggle ${isShort ? 'searchForm__toggle_active' : ''}`} onClick={handleToggle} changeShort={changeShort} firstEntrance={firstEntrance} isCheck={isCheck} />
+            <button
+              className={`searchForm__toggle ${
+                isShort ? "searchForm__toggle_active" : ""
+              }`}
+              onClick={handleToggle}
+              changeShort={changeShort}
+              firstEntrance={firstEntrance}
+              isCheck={isCheck}
+            />
             <p className="searchForm__short-text">Короткометражки</p>
           </div>
         </form>
       </div>
     </section>
-  )
+  );
+}
 
-  }
-  
-  export default SearchForm
+export default SearchForm;
