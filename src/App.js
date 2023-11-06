@@ -10,7 +10,6 @@ import { Error } from "./components/error/Error";
 import apiMain from "./utils/MainApi";
 import apiMovies from "./utils/MoviesApi";
 import CurrentUserContext from "./contexts/CurrentUserContext";
-import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -136,24 +135,20 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute isLogged={isLogged}>
                 <Profile
                   onUpdateUser={handleUpdateUser}
                   logOut={handleLogOut}
                 />
-              </ProtectedRoute>
             }
           />
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute isLogged={isLogged}>
                 <SavedMovies
                   savedMovies={savedMovies}
                   deleteMovie={handleDeleteMovie}
                   isLogged={isLogged}
                 />
-              </ProtectedRoute>
             }
           />
           <Route path="/signin" element={<Login onLogin={handleLogin} />} />
