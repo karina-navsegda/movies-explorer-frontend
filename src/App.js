@@ -124,7 +124,7 @@ function App() {
           <Route
             path="/movies"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute isLogged={isLogged}>
                 <Movies
                   savedMovies={savedMovies}
                   saveMovie={toggleMovie}
