@@ -39,7 +39,7 @@ export function Login({ onLogin }) {
 
   function handleSubmitClick(e) {
     e.preventDefault();
-    validateForm(); // Call validateForm to update isValid
+    validateForm(); 
     if (isValid) {
       onLogin({ password, email });
     }

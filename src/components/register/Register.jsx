@@ -53,7 +53,7 @@ export function Register({ onRegister }) {
 
   function handleSubmitClick(e) {
     e.preventDefault();
-    validateForm(); // Call validateForm to update isValid
+    validateForm(); 
     if (isValid) {
       onRegister({ name, password, email });
     }
