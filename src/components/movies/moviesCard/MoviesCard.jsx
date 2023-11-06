@@ -12,7 +12,7 @@ function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
       setSaved(savedMovies.some(element => movie.id === element.movieId))
   }, [savedMovies, movie.id, setSaved, location])
 
-  function handleSave() {
+ /*  function handleSave() {
     if (savedMovies.some(item => movie.id === item.movieId)) {
       setSaved(true)
       saveMovie(movie)
@@ -21,6 +21,20 @@ function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
       setSaved(false)
       console.log('not saved')
       saveMovie(movie)
+    }
+  } */
+
+  function handleSave() {
+    const isAlreadySaved = savedMovies.some(item => movie.id === item.movieId);
+  
+    if (isAlreadySaved) {
+      setSaved(false);
+      console.log('not saved');
+      deleteMovie(movie.id);
+    } else {
+      setSaved(true);
+      console.log('saved');
+      saveMovie(movie);
     }
   }
 
