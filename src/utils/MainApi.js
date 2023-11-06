@@ -88,9 +88,9 @@ class ApiMain {
         duration: data.duration,
         description: data.description,
         year: data.year,
-        image: "https://api.nomoreparties.co/" + data.image.url,
+        image: `https://api.nomoreparties.co${data.image.url}`,
         trailerLink: data.trailerLink,
-        thumbnail: "https://api.nomoreparties.co/" + data.image.formats.thumbnail.url,
+        thumbnail: `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`,
         movieId: data.id,
         nameRU: data.nameRU,
         nameEN: data.nameEN
