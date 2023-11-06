@@ -13,7 +13,7 @@ function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
   }, [savedMovies, movie.id, setSaved, location])
 
   function handleSave() {
-    if (savedMovies.some(item => item.movieId === item.id)) {
+    if (savedMovies.some(item => movie.id === item.movieId)) {
       setSaved(true)
       saveMovie(movie)
     } else {
