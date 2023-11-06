@@ -131,14 +131,14 @@ function App() {
                   savedMovies={savedMovies}
                   saveMovie={toggleMovie}
                   isLogged={isLogged}
-                />{" "}
+                />
               </ProtectedRoute>
             }
           />
           <Route
             path="/profile"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute isLogged={isLogged}>
                 <Profile
                   onUpdateUser={handleUpdateUser}
                   logOut={handleLogOut}
@@ -149,12 +149,12 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute isLogged={isLogged}>
                 <SavedMovies
                   savedMovies={savedMovies}
                   deleteMovie={handleDeleteMovie}
                   isLogged={isLogged}
-                />{" "}
+                />
               </ProtectedRoute>
             }
           />
