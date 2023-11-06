@@ -85,11 +85,11 @@ function Movies({ savedMovies, saveMovie, isLogged }) {
           setIsCheck={setIsCheck}
           searchedMovie={handleSearchMovie}
         />
-        <MoviesCardList
+      {/*   <MoviesCardList
           movies={filteredMovies}
           savedMovies={savedMovies}
           saveMovie={saveMovie}
-        />
+        /> */}
       </main>
       <Footer />
     </>
