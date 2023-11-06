@@ -28,6 +28,7 @@ function App() {
         .then(([userData, dataMovies]) => {
           setCurrentUser(userData);
           setSavedMovies(dataMovies);
+          console.log(dataMovies)
           console.log(savedMovies);
           console.log(userData);
           setIsLogged(true);
