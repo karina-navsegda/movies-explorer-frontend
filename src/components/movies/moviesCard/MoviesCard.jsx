@@ -16,9 +16,10 @@ function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
     if (savedMovies.some(item => movie.id === item.movieId)) {
       setSaved(true)
       saveMovie(movie)
+      console.log('saved')
     } else {
       setSaved(false)
-      console.log(movie)
+      console.log('not saved')
       saveMovie(movie)
     }
   }

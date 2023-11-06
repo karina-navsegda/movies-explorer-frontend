@@ -41,7 +41,6 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
              isCheck={isCheck}
              searchMovies={searchMovies}
              searchedMovie={searchedMovie}
-          //   setIsError={setIsError}
              firstEntrance={firstEntrance}
              savedMovies={savedMovies}
              movies={savedMovies}
