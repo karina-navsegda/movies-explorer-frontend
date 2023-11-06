@@ -23,6 +23,7 @@ function App() {
       Promise.all([
         apiMain.getProfile(localStorage.token),
         apiMovies.getMovies(localStorage.token),
+        setIsLogged(true),
       ])
         .then(([userData, dataMovies]) => {
           setCurrentUser(userData);
