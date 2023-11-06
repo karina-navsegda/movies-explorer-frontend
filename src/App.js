@@ -28,7 +28,7 @@ function App() {
         .then(([userData, dataMovies]) => {
           setCurrentUser(userData);
           setSavedMovies(dataMovies);
-          console.log(dataMovies)
+          console.log(dataMovies);
           console.log(savedMovies);
           console.log(userData);
           setIsLogged(true);
@@ -126,13 +126,11 @@ function App() {
           <Route
             path="/movies"
             element={
-              <ProtectedRoute isLogged={isLogged}>
-                <Movies
-                  savedMovies={savedMovies}
-                  saveMovie={toggleMovie}
-                  isLogged={isLogged}
-                />
-              </ProtectedRoute>
+              <Movies
+                savedMovies={savedMovies}
+                saveMovie={toggleMovie}
+                isLogged={isLogged}
+              />
             }
           />
           <Route

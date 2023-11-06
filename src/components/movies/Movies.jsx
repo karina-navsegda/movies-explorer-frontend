@@ -76,7 +76,7 @@ function Movies({ savedMovies, saveMovie, isLogged }) {
     <>
       <Header isLogged={isLogged} />
       <main className="main">
-    {/*     <SearchForm
+         <SearchForm
           isCheck={isCheck}
           searchMovies={searchMovies}
           firstEntrance={firstEntrance}
@@ -84,12 +84,12 @@ function Movies({ savedMovies, saveMovie, isLogged }) {
           filter={filter}
           setIsCheck={setIsCheck}
           searchedMovie={handleSearchMovie}
-        /> */}
-      {/*   <MoviesCardList
+        /> 
+        <MoviesCardList
           movies={filteredMovies}
           savedMovies={savedMovies}
           saveMovie={saveMovie}
-        /> */}
+        /> 
       </main>
       <Footer />
     </>
