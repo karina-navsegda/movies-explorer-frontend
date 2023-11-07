@@ -105,7 +105,7 @@ function App() {
       return movie.movieId === data.id;
     });
     if (isSaved) {
-      handleDeleteMovie(foundMovies[0]._id);
+      handleDeleteMovie(foundMovies[0].id);
     } else {
       console.log(data, localStorage.token);
       apiMain
