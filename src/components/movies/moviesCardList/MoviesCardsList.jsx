@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 //import Preloader from '../Preloader/Preloader'
 
 
-function MoviesCardList({ movies, saveMovie, savedMovies, deleteMovie }) {
+function MoviesCardList({ movies, saveMovie, filteredMovies, deleteMovie }) {
   const { pathname } = useLocation()
   const [count, setCount] = useState('')
-  const slice = movies.slice(0, count)
+  const slice = filteredMovies ? filteredMovies.slice(0, count) : [];
 
 
   function printCards() {
@@ -62,7 +62,7 @@ function MoviesCardList({ movies, saveMovie, savedMovies, deleteMovie }) {
             <MoviesCard
               key={data._id}
               movie={data}
-              savedMovies={savedMovies}
+              filteredMovies={filteredMovies}
               saveMovie={saveMovie}
               deleteMovie={deleteMovie}
             />

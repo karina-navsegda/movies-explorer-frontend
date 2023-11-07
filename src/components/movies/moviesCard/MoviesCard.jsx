@@ -3,24 +3,23 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 
-function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
+function MoviesCard({ movie, saveMovie, filteredMovies, deleteMovie }) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
  
-  useEffect(() => {
+ /*  useEffect(() => {
     if (location === '/movies')
       setSaved(savedMovies.some(element => movie.id === element.movieId))
   }, [savedMovies, movie.id, setSaved, location])
-
+ */
 
   function handleSave() {
-    const isAlreadySaved = savedMovies.some(item => movie.id === item.movieId);
+    const isAlreadySaved = filteredMovies.some((item) => item.isSaved === true);
   
     if (isAlreadySaved) {
       setSaved(false);
       console.log('not saved');
-      const movieToDelete = savedMovies.find(item => movie.id === item.movieId);
-      deleteMovie(movieToDelete._id); 
+      saveMovie(movie);
     } else {
       setSaved(true);
       console.log('saved');

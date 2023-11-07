@@ -15,6 +15,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState({});
   const [isLogged, setIsLogged] = useState(false);
+  const [movies, setMovies] = useState({});
   const navigateTo = useNavigate();
 
   useEffect(() => {
@@ -25,11 +26,10 @@ function App() {
         setIsLogged(true),
       ])
         .then(([userData, dataMovies]) => {
-          setCurrentUser(userData);
-          setSavedMovies(dataMovies);
-          console.log(dataMovies);
-          console.log(savedMovies);
-          console.log(userData);
+          setCurrentUser(userData);          
+          setMovies(dataMovies.forEach(item => {
+            item.isSaved = false; 
+            }));
           setIsLogged(true);
         })
         .catch((err) => {
@@ -100,14 +100,11 @@ function App() {
   }
 
   function toggleMovie(data) {
-    const isSaved = savedMovies.some((element) => data.id === element.movieId);
-    const foundMovies = savedMovies.filter((movie) => {
-      return movie.movieId === data.id;
-    });
-    if (isSaved) {
-      handleDeleteMovie(foundMovies[0].id);
+     if (data.isSaved === true) {
+      handleDeleteMovie(data.id);
     } else {
       console.log(data, localStorage.token);
+      data.isSaved = true;
       apiMain
         .saveMovie(data, localStorage.token)
         .then((res) => {
@@ -126,7 +123,7 @@ function App() {
             path="/movies"
             element={
               <Movies
-                savedMovies={savedMovies}
+                movies={movies}
                 saveMovie={toggleMovie}
                 isLogged={isLogged}
                 deleteMovie={handleDeleteMovie}

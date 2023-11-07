@@ -7,89 +7,89 @@ import Header from "../header/Header";
 import MoviesCardList from "./moviesCardList/MoviesCardsList";
 import SearchForm from "./searchForm/SearchForm";
 
-function Movies({ savedMovies, saveMovie, isLogged, deleteMovie }) {
-  const [allMovies, setAllMovies] = useState([]);
+function Movies({ movies, isLogged, saveMovie, deleteMovie }) {
+  
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [searchedMovie, setSearchedMovie] = useState("");
+  const [neededMovie, setNeededMovie] = useState("");
+  const [theMovies, setTheMovies] = useState([]);
   const [isCheck, setIsCheck] = useState(false);
   const [firstEntrance, setFirstEntrance] = useState(true);
 
-  const handleSearchMovie = (movie) => {
-    setSearchedMovie(movie);
-  };
-
   const filter = useCallback((search, isCheck, movies) => {
-    setSearchedMovie(search);
+    setNeededMovie(search);
+    console.log(search, isCheck, movies)
     localStorage.setItem("movie", JSON.stringify(search));
     localStorage.setItem("shorts", JSON.stringify(isCheck));
-    localStorage.setItem("allmovies", JSON.stringify(movies));
+    localStorage.setItem("theMovies", JSON.stringify(movies));
     setFilteredMovies(
-      movies.filter((movie) => {
-        const searchName = movie.nameRU
+      movies.filter((item) => {
+        const searchName = item.nameRU
           .toLowerCase()
           .includes(search.toLowerCase());
-        return isCheck ? searchName && movie.duration <= 40 : searchName;
+        return isCheck ? searchName && item.duration <= 40 : searchName;
       })
     );
+    console.log(filteredMovies);
+    console.log(movies.filter((item) => {
+      const searchName = item.nameRU
+        .toLowerCase()
+        .includes(search.toLowerCase());
+      return isCheck ? searchName && item.duration <= 40 : searchName;
+    }))
   }, []);
 
   function searchMovies(search) {
-    if (allMovies.length === 0) {
+    if (theMovies.length === 0) {
       apiMovies
-        .getMovies()
-        .then((res) => {
-          setAllMovies(res);
-          console.log(allMovies);
-          setIsCheck(false);
-          setFirstEntrance(false);
-          filter(search, isCheck, res);
-        })
-        .catch((err) => {
-          console.error(`Ошибка при поиске ${err}`);
-        });
-    } else {
-      filter(search, isCheck, allMovies);
-      console.log(allMovies);
-    }
-  }
+      .getMovies()
+      .then((res) => {
+        setTheMovies(res);
+        setIsCheck(false);
+        setFirstEntrance(false);
+        filter(search, isCheck, res); 
+        console.log(res);
+        console.log(search);
+      })
+      .catch((err) => {
+        console.error(`Ошибка при поиске ${err}`);
+      });
+  } }
 
-  useEffect(() => {
-    if (localStorage.allmovies && localStorage.movie && localStorage.shorts) {
-      const movies = JSON.parse(localStorage.allmovies);
-      const search =
-        localStorage.getItem("movie") !== null
-          ? JSON.parse(localStorage.getItem("movie"))
-          : "";
-      const isCheck =
-        localStorage.getItem("shorts") !== null
-          ? JSON.parse(localStorage.getItem("shorts"))
-          : false;
-      setFirstEntrance(false);
-      setSearchedMovie(search);
-      setIsCheck(isCheck);
-      setAllMovies(movies);
-      filter(search, isCheck, movies);
+   useEffect(() => {
+    if (localStorage.theMovies && localStorage.shorts && localStorage.movie) {
+      const movies = JSON.parse(localStorage.theMovies)
+      const search = JSON.parse(localStorage.movie)
+      const isCheck = JSON.parse(localStorage.shorts)
+      setFirstEntrance(false)
+      setNeededMovie(search)
+      setIsCheck(isCheck)
+      setTheMovies(movies)
+      filter(search, isCheck, movies)
     }
-  }, [filter]);
+  }, [filter]) 
 
   return (
     <>
       <Header isLogged={isLogged} />
       <main className="main">
          <SearchForm
-          isCheck={isCheck}
-          searchMovies={searchMovies}
-          firstEntrance={firstEntrance}
-          movies={allMovies}
-          filter={filter}
-          setIsCheck={setIsCheck}
-          searchedMovie={handleSearchMovie}
+         filteredMovies={filteredMovies}
+         movies={theMovies}
+         saveMovie={saveMovie}
+         deleteMovie={deleteMovie}
+         neededMovie={neededMovie}
+         searchMovies={searchMovies}
+         isCheck={isCheck}
+         setIsCheck={setIsCheck}
+         filter={filter}
         /> 
         <MoviesCardList
-          movies={filteredMovies}
-          savedMovies={savedMovies}
+          filteredMovies={filteredMovies}
+          movies={theMovies}
           saveMovie={saveMovie}
           deleteMovie={deleteMovie}
+          neededMovie={neededMovie}
+          searchMovies={searchMovies}
         /> 
       </main>
       <Footer />

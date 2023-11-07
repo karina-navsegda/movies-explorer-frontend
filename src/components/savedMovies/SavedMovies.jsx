@@ -1,4 +1,4 @@
-import Header from "../header/Header";
+/* import Header from "../header/Header";
 import SearchForm from "../movies/searchForm/SearchForm"
 import MoviesCardList from "../movies/moviesCardList/MoviesCardsList";
 import Footer from "../footer/Footer"
@@ -15,7 +15,7 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
     setSearchedMovie(search);
     localStorage.setItem("movie", JSON.stringify(search));
     localStorage.setItem("shorts", JSON.stringify(isCheck));
-    localStorage.setItem("allmovies", JSON.stringify(movies));
+    localStorage.setItem("theMovies", JSON.stringify(movies));
     setFilteredMovies(
       movies.filter((movie) => {
         const searchName = movie.nameRU
@@ -65,4 +65,4 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
     )
   }
   
-  export default SavedMovies
+  export default SavedMovies */

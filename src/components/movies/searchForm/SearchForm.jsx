@@ -1,46 +1,35 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import searchIcon from "../../../images/search-2.svg"
-import useFormValidation from '../../../hook/validation'
+import React, { useState } from "react";
+import searchIcon from "../../../images/search-2.svg";
 
-function SearchForm({isCheck, searchedMovie, searchMovies, setIsError, firstEntrance, savedMovies, movies, filter, setIsCheck}) {
-  const [isShort, setIsShort] = useState(false);
-
-  const handleToggle = () => {
-    setIsShort(!isShort);
-  }
-
-  const { pathname } = useLocation()
-  const { values, handleChange, reset } = useFormValidation()
-
-  useEffect(() => {
-    if ((pathname === '/saved-movies' && savedMovies.length === 0)) {
-      reset({ search: '' })
-    } else {
-      reset({ search: searchedMovie })
-    }
-/*     setIsError(false) */
-  }, [searchedMovie, reset, setIsError, pathname, savedMovies])
+function SearchForm({
+  isCheck,
+  neededMovie,
+  searchMovies,
+  firstEntrance,
+  movies,
+  filter,
+  setIsCheck,
+}) {
+  const [film, setFilm] = useState("");
+  const [isToggled, setIsToggled] = useState(false);
 
   function onSubmit(evt) {
-    evt.preventDefault()
+    evt.preventDefault();
     if (evt.target.film.value) {
-      searchMovies(evt.target.film.value)
-      console.log("чето прорисходит")
-     // setIsError(false)
-    } else {
-     // setIsError(true)
+      searchMovies(evt.target.film.value);
+      console.log("чето прорисходит");
     }
   }
 
   function changeShort() {
     if (isCheck) {
-      setIsCheck(false)
-      filter(values.search, false, movies)
+      setIsCheck(false);
+      setIsToggled(false);
+      filter(film, false, movies);
     } else {
-      setIsCheck(true)
-      filter(values.search, true, movies)
+      setIsCheck(true);
+      setIsToggled(true);
+      filter(film, true, movies);
     }
   }
 
@@ -59,9 +48,11 @@ function SearchForm({isCheck, searchedMovie, searchMovies, setIsError, firstEntr
                 className="searchForm__name"
                 type="text"
                 placeholder="Фильм"
-                name="search-film"
+                name="film"
                 id="film"
                 required
+                //   value={film}
+                // onChange={(e) => setFilm(e.target.value)}
               />
             </div>
             <button className="searchForm__search-btn" type="submit">
@@ -71,10 +62,9 @@ function SearchForm({isCheck, searchedMovie, searchMovies, setIsError, firstEntr
           <div className="searchForm__short">
             <button
               className={`searchForm__toggle ${
-                isShort ? "searchForm__toggle_active" : ""
+                isToggled ? "searchForm__toggle_active" : ""
               }`}
-              onClick={handleToggle}
-              changeShort={changeShort}
+              onClick={changeShort}
               firstEntrance={firstEntrance}
               isCheck={isCheck}
             />
