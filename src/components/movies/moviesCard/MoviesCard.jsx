@@ -19,7 +19,8 @@ function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
     if (isAlreadySaved) {
       setSaved(false);
       console.log('not saved');
-      saveMovie(movie);
+      const movieToDelete = savedMovies.find(item => movie.id === item.movieId);
+      deleteMovie(movieToDelete._id); 
     } else {
       setSaved(true);
       console.log('saved');
