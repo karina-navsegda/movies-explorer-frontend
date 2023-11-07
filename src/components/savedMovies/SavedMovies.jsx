@@ -13,9 +13,9 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
 
   const filter = useCallback((search, isShort, movies) => {
     setNeededMovie(search)
-    setFilteredSaved(movies.filter((movie) => {
-      const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
-      return isShort ? (searchName && movie.duration <= 40) : searchName
+    setFilteredSaved(movies.filter((item) => {
+      const searchName = item.nameRU.toLowerCase().includes(search.toLowerCase())
+      return isShort ? (searchName && item.duration <= 40) : searchName
     }))
   }, [])
 

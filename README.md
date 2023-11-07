@@ -7,6 +7,7 @@ https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE
 Pull request 
 
 https://github.com/karina-navsegda/movies-explorer-frontend/pull/2
+OR github.com/karina-navsegda/movies-explorer-frontend/pull/2
 
 Web-site 
 
