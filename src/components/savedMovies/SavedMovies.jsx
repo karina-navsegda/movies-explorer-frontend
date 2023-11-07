@@ -11,9 +11,9 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
   const [isCheck, setIsCheck] = useState(false)
   const [firstEntrance, setFirstEntrance] = useState(true)
 
-  const filter = useCallback((search, isCheck, movies) => {
+  const filter = useCallback((search, isCheck, savedMovies) => {
     setSearchedMovie(search)
-    setFilteredMovies(movies.filter((movie) => {
+    setFilteredMovies(savedMovies.filter((movie) => {
       const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
       return isCheck ? (searchName && movie.duration <= 40) : searchName
     }))
