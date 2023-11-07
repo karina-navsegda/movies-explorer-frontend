@@ -12,12 +12,19 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
   const [firstEntrance, setFirstEntrance] = useState(true)
 
   const filter = useCallback((search, isCheck, movies) => {
-    setSearchedMovie(search)
-    setFilteredMovies(movies.filter((movie) => {
-      const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
-      return isCheck ? (searchName && movie.duration <= 40) : searchName
-    }))
-  }, [])
+    setSearchedMovie(search);
+    localStorage.setItem("movie", JSON.stringify(search));
+    localStorage.setItem("shorts", JSON.stringify(isCheck));
+    localStorage.setItem("allmovies", JSON.stringify(movies));
+    setFilteredMovies(
+      movies.filter((movie) => {
+        const searchName = movie.nameRU
+          .toLowerCase()
+          .includes(search.toLowerCase());
+        return isCheck ? searchName && movie.duration <= 40 : searchName;
+      })
+    );
+  }, []);
 
   function searchMovies(search) {
     setFirstEntrance(false)
