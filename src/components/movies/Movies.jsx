@@ -12,21 +12,21 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [neededMovie, setNeededMovie] = useState("");
   const [theMovies, setTheMovies] = useState([]);
-  const [isCheck, setIsCheck] = useState(false);
+  const [isShort, setIsShort] = useState(false);
   const [firstEntrance, setFirstEntrance] = useState(true);
 
-  const filter = useCallback((search, isCheck, movies) => {
+  const filter = useCallback((search, isShort, movies) => {
     setNeededMovie(search);
-    console.log(search, isCheck, movies)
+    console.log(search, isShort, movies)
     localStorage.setItem("movie", JSON.stringify(search));
-    localStorage.setItem("shorts", JSON.stringify(isCheck));
+    localStorage.setItem("shorts", JSON.stringify(isShort));
     localStorage.setItem("theMovies", JSON.stringify(movies));
     setFilteredMovies(
       movies.filter((item) => {
         const searchName = item.nameRU
           .toLowerCase()
           .includes(search.toLowerCase());
-        return isCheck ? searchName && item.duration <= 40 : searchName;
+        return isShort ? searchName && item.duration <= 40 : searchName;
       })
     );
     console.log(filteredMovies);
@@ -34,7 +34,7 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
       const searchName = item.nameRU
         .toLowerCase()
         .includes(search.toLowerCase());
-      return isCheck ? searchName && item.duration <= 40 : searchName;
+      return isShort ? searchName && item.duration <= 40 : searchName;
     }))
   }, []);
 
@@ -44,9 +44,9 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
       .getMovies()
       .then((res) => {
         setTheMovies(res);
-        setIsCheck(false);
+        setIsShort(false);
         setFirstEntrance(false);
-        filter(search, isCheck, res); 
+        filter(search, isShort, res); 
         console.log(res);
         console.log(search);
       })
@@ -59,12 +59,12 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
     if (localStorage.theMovies && localStorage.shorts && localStorage.movie) {
       const movies = JSON.parse(localStorage.theMovies)
       const search = JSON.parse(localStorage.movie)
-      const isCheck = JSON.parse(localStorage.shorts)
+      const isShort = JSON.parse(localStorage.shorts)
       setFirstEntrance(false)
       setNeededMovie(search)
-      setIsCheck(isCheck)
+      setIsShort(isShort)
       setTheMovies(movies)
-      filter(search, isCheck, movies)
+      filter(search, isShort, movies)
     }
   }, [filter]) 
 
@@ -79,8 +79,8 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
          deleteMovie={deleteMovie}
          neededMovie={neededMovie}
          searchMovies={searchMovies}
-         isCheck={isCheck}
-         setIsCheck={setIsCheck}
+         isShort={isShort}
+         setIsShort={setIsShort}
          filter={filter}
         /> 
         <MoviesCardList

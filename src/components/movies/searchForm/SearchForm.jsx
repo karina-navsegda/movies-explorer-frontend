@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import searchIcon from "../../../images/search-2.svg";
 
 function SearchForm({
-  isCheck,
+  isShort,
   neededMovie,
   searchMovies,
   firstEntrance,
   movies,
   filter,
-  setIsCheck,
+  setIsShort,
 }) {
   const [film, setFilm] = useState("");
   const [isToggled, setIsToggled] = useState(false);
@@ -22,12 +22,12 @@ function SearchForm({
   }
 
   function changeShort() {
-    if (isCheck) {
-      setIsCheck(false);
+    if (isShort) {
+      setIsShort(false);
       setIsToggled(false);
       filter(film, false, movies);
     } else {
-      setIsCheck(true);
+      setIsShort(true);
       setIsToggled(true);
       filter(film, true, movies);
     }
@@ -66,7 +66,7 @@ function SearchForm({
               }`}
               onClick={changeShort}
               firstEntrance={firstEntrance}
-              isCheck={isCheck}
+              isShort={isShort}
             />
             <p className="searchForm__short-text">Короткометражки</p>
           </div>

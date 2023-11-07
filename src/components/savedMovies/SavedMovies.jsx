@@ -1,4 +1,4 @@
-/* import Header from "../header/Header";
+ import Header from "../header/Header";
 import SearchForm from "../movies/searchForm/SearchForm"
 import MoviesCardList from "../movies/moviesCardList/MoviesCardsList";
 import Footer from "../footer/Footer"
@@ -7,28 +7,21 @@ import { useCallback } from "react";
 
 function SavedMovies({savedMovies, deleteMovie, isLogged}) {
   const [filteredMovies, setFilteredMovies] = useState(savedMovies)
-  const [searchedMovie, setSearchedMovie] = useState('')
-  const [isCheck, setIsCheck] = useState(false)
+  const [neededMovie, setNeededMovie] = useState('')
+  const [isShort, setIsShort] = useState(false)
   const [firstEntrance, setFirstEntrance] = useState(true)
 
-  const filter = useCallback((search, isCheck, movies) => {
-    setSearchedMovie(search);
-    localStorage.setItem("movie", JSON.stringify(search));
-    localStorage.setItem("shorts", JSON.stringify(isCheck));
-    localStorage.setItem("theMovies", JSON.stringify(movies));
-    setFilteredMovies(
-      movies.filter((movie) => {
-        const searchName = movie.nameRU
-          .toLowerCase()
-          .includes(search.toLowerCase());
-        return isCheck ? searchName && movie.duration <= 40 : searchName;
-      })
-    );
-  }, []);
+  const filter = useCallback((search, isShort, movies) => {
+    setNeededMovie(search)
+    setFilteredMovies(movies.filter((movie) => {
+      const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
+      return isShort ? (searchName && movie.duration <= 40) : searchName
+    }))
+  }, [])
 
   function searchMovies(search) {
     setFirstEntrance(false)
-    filter(search, isCheck, savedMovies)
+    filter(search, isShort, savedMovies)
   }
 
   useEffect(() => {
@@ -37,22 +30,22 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
     } else {
       setFirstEntrance(false)
     }
-    filter(searchedMovie, isCheck, savedMovies)
-  }, [filter, savedMovies, isCheck, searchedMovie])
+    filter(neededMovie, isShort, savedMovies)
+  }, [filter, savedMovies, isShort, neededMovie])
 
     return (
       <>
         <Header isLogged={isLogged}/>
         <main className="main">
           <SearchForm 
-             isCheck={isCheck}
+             isShort={isShort}
              searchMovies={searchMovies}
-             searchedMovie={searchedMovie}
+             neededMovie={neededMovie}
              firstEntrance={firstEntrance}
              savedMovies={savedMovies}
              movies={savedMovies}
              filter={filter}
-             setIsCheck={setIsCheck}
+             setIsShort={setIsShort}
         />
          <MoviesCardList 
                movies={filteredMovies}
@@ -65,4 +58,4 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
     )
   }
   
-  export default SavedMovies */
+  export default SavedMovies 
