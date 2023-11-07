@@ -2,48 +2,55 @@ import { useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-
-function MoviesCard({ movie, saveMovie, filteredMovies, deleteMovie }) {
+function MoviesCard({
+  movie,
+  saveMovie,
+  filteredMovies,
+  deleteMovie,
+  savedMovies,
+}) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
- 
- /*  useEffect(() => {
-    if (location === '/movies')
-      setSaved(savedMovies.some(element => movie.id === element.movieId))
-  }, [savedMovies, movie.id, setSaved, location])
- */
+
+  useEffect(() => {
+    if (location === "/movies")
+      setSaved(savedMovies.some((element) => movie.id === element.movieId));
+  }, [savedMovies, movie.id, setSaved, location]);
 
   function handleSave() {
-    const isAlreadySaved = filteredMovies.some((item) => item.isSaved === true);
-  
-    if (isAlreadySaved) {
+    if (savedMovies.some((element) => movie.id === element.movieId)) {
       setSaved(false);
-      console.log('not saved');
+      console.log("not saved");
       saveMovie(movie);
     } else {
       setSaved(true);
-      console.log('saved');
+      console.log("saved");
       saveMovie(movie);
     }
   }
 
-
   return (
     <div className="moviesCardList__card">
       <div className="moviesCardList__img-block">
-        <img className="moviesCardList__img" src={`https://api.nomoreparties.co${movie.image.url}`} alt={movie.nameRU} />
-        {location.pathname === '/saved-movies' ? (
-          <button className="moviesCardList__btn-delete" onClick={deleteMovie}>
-          </button>
+        <img
+          className="moviesCardList__img"
+          src={`https://api.nomoreparties.co${movie.image.url}`}
+          alt={movie.nameRU}
+        />
+        {location.pathname === "/saved-movies" ? (
+          <button
+            className="moviesCardList__btn-delete"
+            onClick={deleteMovie}
+          ></button>
+        ) : isSaved ? (
+          <button
+            className="moviesCardList__btn-saved"
+            onClick={handleSave}
+          ></button>
         ) : (
-          isSaved ? (
-            <button className="moviesCardList__btn-saved" onClick={handleSave}>
-            </button>
-          ) : (
-            <button className="moviesCardList__btn-save" onClick={handleSave}>
-              Сохранить
-            </button>
-          )
+          <button className="moviesCardList__btn-save" onClick={handleSave}>
+            Сохранить
+          </button>
         )}
       </div>
       <div className="moviesCardList__text">
@@ -52,5 +59,5 @@ function MoviesCard({ movie, saveMovie, filteredMovies, deleteMovie }) {
       </div>
     </div>
   );
-          }
+}
 export default MoviesCard;

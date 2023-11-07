@@ -7,7 +7,7 @@ import Header from "../header/Header";
 import MoviesCardList from "./moviesCardList/MoviesCardsList";
 import SearchForm from "./searchForm/SearchForm";
 
-function Movies({ movies, isLogged, saveMovie, deleteMovie }) {
+function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
   
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [neededMovie, setNeededMovie] = useState("");
@@ -90,6 +90,7 @@ function Movies({ movies, isLogged, saveMovie, deleteMovie }) {
           deleteMovie={deleteMovie}
           neededMovie={neededMovie}
           searchMovies={searchMovies}
+          savedMovies={savedMovies}
         /> 
       </main>
       <Footer />

@@ -13,7 +13,7 @@ import CurrentUserContext from "./contexts/CurrentUserContext";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [savedMovies, setSavedMovies] = useState({});
+  const [savedMovies, setSavedMovies] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
   const [movies, setMovies] = useState({});
   const navigateTo = useNavigate();
@@ -25,15 +25,13 @@ function App() {
         apiMovies.getMovies(localStorage.token),
         setIsLogged(true),
       ])
-        .then(([userData, dataMovies]) => {
-          setCurrentUser(userData);          
-          setMovies(dataMovies.forEach(item => {
-            item.isSaved = false; 
-            }));
+        .then(([dataUser, dataMovies]) => {
+          setCurrentUser(dataUser);
+         setSavedMovies(dataMovies)
           setIsLogged(true);
         })
         .catch((err) => {
-          console.error(`Ошибка при загрузке начальных данных ${err}`);
+          console.error(`Ошибка при загрузке данных ${err}`);
           localStorage.clear();
         });
     } else {
@@ -100,11 +98,14 @@ function App() {
   }
 
   function toggleMovie(data) {
-     if (data.isSaved === true) {
-      handleDeleteMovie(data.id);
+    const isSaved = savedMovies.some(item => data.id === item.movieId)
+    const savedArray = savedMovies.filter((movie) => {
+      return movie.movieId === data.id
+    })
+    if (isSaved) {
+      handleDeleteMovie(savedArray[0]._id);
     } else {
       console.log(data, localStorage.token);
-      data.isSaved = true;
       apiMain
         .saveMovie(data, localStorage.token)
         .then((res) => {
@@ -127,26 +128,25 @@ function App() {
                 saveMovie={toggleMovie}
                 isLogged={isLogged}
                 deleteMovie={handleDeleteMovie}
+                savedMovies={savedMovies}
               />
             }
           />
           <Route
             path="/profile"
             element={
-                <Profile
-                  onUpdateUser={handleUpdateUser}
-                  logOut={handleLogOut}
-                />
+              <Profile onUpdateUser={handleUpdateUser} logOut={handleLogOut} />
             }
           />
           <Route
             path="/saved-movies"
             element={
-                <SavedMovies
-                  savedMovies={savedMovies}
-                  deleteMovie={handleDeleteMovie}
-                  isLogged={isLogged}
-                />
+              <SavedMovies
+                savedMovies={savedMovies}
+                deleteMovie={handleDeleteMovie}
+                isLogged={isLogged}
+                
+              />
             }
           />
           <Route path="/signin" element={<Login onLogin={handleLogin} />} />

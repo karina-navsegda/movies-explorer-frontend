@@ -94,7 +94,6 @@ class ApiMain {
         movieId: data.id,
         nameRU: data.nameRU,
         nameEN: data.nameEN,
-        isSaved: data.isSaved
       })
     }).then(this._checkResponse);
   }
