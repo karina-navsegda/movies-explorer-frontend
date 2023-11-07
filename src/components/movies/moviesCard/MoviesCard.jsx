@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 
-function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
+function MoviesCard({ movie, saveMovie, savedMovies }) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
  
@@ -30,7 +30,7 @@ function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
     if (isAlreadySaved) {
       setSaved(false);
       console.log('not saved');
-      deleteMovie(movie.id);
+      saveMovie(movie);
     } else {
       setSaved(true);
       console.log('saved');
