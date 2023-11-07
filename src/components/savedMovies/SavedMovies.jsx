@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 import { useCallback } from "react";
 
 function SavedMovies({savedMovies, deleteMovie, isLogged}) {
-  const [filteredMovies, setFilteredMovies] = useState(savedMovies)
+  const [filteredSaved, setFilteredSaved] = useState(savedMovies)
   const [neededMovie, setNeededMovie] = useState('')
   const [isShort, setIsShort] = useState(false)
   const [firstEntrance, setFirstEntrance] = useState(true)
 
   const filter = useCallback((search, isShort, movies) => {
     setNeededMovie(search)
-    setFilteredMovies(movies.filter((movie) => {
+    setFilteredSaved(movies.filter((movie) => {
       const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
       return isShort ? (searchName && movie.duration <= 40) : searchName
     }))
@@ -48,7 +48,7 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
              setIsShort={setIsShort}
         />
          <MoviesCardList 
-               movies={filteredMovies}
+               movies={filteredSaved}
                deleteMovie={deleteMovie}
                firstEntrance={firstEntrance}
          /> 
