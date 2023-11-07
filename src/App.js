@@ -29,6 +29,7 @@ function App() {
           setCurrentUser(dataUser);
          setSavedMovies(dataMovies)
           setIsLogged(true);
+          console.log(dataMovies)
           console.log(savedMovies)
         })
         .catch((err) => {
