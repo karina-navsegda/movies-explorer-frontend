@@ -29,6 +29,7 @@ function App() {
           setCurrentUser(dataUser);
          setSavedMovies(dataMovies)
           setIsLogged(true);
+          console.log(savedMovies)
         })
         .catch((err) => {
           console.error(`Ошибка при загрузке данных ${err}`);
@@ -145,7 +146,7 @@ function App() {
                 savedMovies={savedMovies}
                 deleteMovie={handleDeleteMovie}
                 isLogged={isLogged}
-                
+
               />
             }
           />
