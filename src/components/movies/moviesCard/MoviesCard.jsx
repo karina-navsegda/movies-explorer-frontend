@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 
-function MoviesCard({ movie, saveMovie, savedMovies }) {
+function MoviesCard({ movie, saveMovie, savedMovies, deleteMovie }) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
  

@@ -129,6 +129,7 @@ function App() {
                 savedMovies={savedMovies}
                 saveMovie={toggleMovie}
                 isLogged={isLogged}
+                deleteMovie={handleDeleteMovie}
               />
             }
           />
