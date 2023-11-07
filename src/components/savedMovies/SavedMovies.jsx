@@ -31,6 +31,7 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
       setFirstEntrance(false)
     }
     filter(neededMovie, isShort, savedMovies)
+    console.log(neededMovie, isShort, savedMovies)
   }, [filter, savedMovies, isShort, neededMovie])
 
     return (
