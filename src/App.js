@@ -110,13 +110,16 @@ function App() {
       return movie.movieId === data.id
     })
     if (isSaved) {
+      console.log('deleting')
       handleDeleteMovie(savedArray[0]._id);
     } else {
       console.log(data, localStorage.token);
+      console.log(isSaved)
       apiMain
         .saveMovie(data, localStorage.token)
         .then((res) => {
           setSavedMovies([res, ...savedMovies]);
+          console.log(savedMovies)
         })
         .catch((err) => console.error(`Ошибка сохранения фильма ${err}`));
     }
