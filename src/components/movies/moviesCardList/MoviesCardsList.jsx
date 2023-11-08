@@ -18,12 +18,12 @@ function MoviesCardList({ movies, saveMovie, filteredMovies, deleteMovie, savedM
     const smallScreen = 480
   
     if (window.innerWidth < maxScreen) {
-      counter.init = 9
-      counter.step = 3
+      counter.init = 12
+      counter.step = 4
     }
     if (window.innerWidth < mediumScreen) {
-      counter.init = 6
-      counter.step = 2
+      counter.init = 12
+      counter.step = 3
     }
     if (window.innerWidth < smallScreen) {
       counter.init = 5
@@ -37,10 +37,10 @@ function MoviesCardList({ movies, saveMovie, filteredMovies, deleteMovie, savedM
       setCount(printCards().init)
       function printCardsForResize() {
         if (window.innerWidth >= 1280) {
-          setCount(9)
+          setCount(12)
         }
         if (window.innerWidth < 1280 && window.innerWidth >= 768) {
-          setCount(6)
+          setCount(12)
         }
         if (window.innerWidth < 768) {
           setCount(5)
