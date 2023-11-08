@@ -128,7 +128,7 @@ function App() {
   } */
 
   function toggleMovie(data) {
-    const isSaved = savedMovies.some(item => data.id === item.id);
+    const isSaved = savedMovies.some(item => data.id === item.data.movieId);
     console.log('isSaved:', isSaved);
     console.log(savedMovies)
     console.log(data.id)
