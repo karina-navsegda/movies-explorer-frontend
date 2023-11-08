@@ -127,11 +127,13 @@ function App() {
   } */
 
   function toggleMovie(data) {
-    const isSaved = savedMovies.some(item => data.id === item.id);
+    const isSaved = savedMovies.some(item => data.id === item.movieId);
     console.log('isSaved:', isSaved);
     if (isSaved) {
       console.log('deleting');
-      const savedArray = savedMovies.filter(movie => movie.id === data.id);
+      const savedArray = savedMovies.filter((movie) => {
+        return movie.movieId === data.id
+      })
       handleDeleteMovie(savedArray[0]._id);
     } else {
       console.log(data, localStorage.token);
