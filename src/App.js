@@ -119,6 +119,7 @@ function App() {
         .saveMovie(data, localStorage.token)
         .then((res) => {
           setSavedMovies([res, ...savedMovies]);
+          console.log(res)
           console.log(savedMovies)
         })
         .catch((err) => console.error(`Ошибка сохранения фильма ${err}`));
