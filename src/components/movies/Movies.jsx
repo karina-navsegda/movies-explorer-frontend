@@ -14,7 +14,7 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
   const [theMovies, setTheMovies] = useState([]);
   const [isShort, setIsShort] = useState(false);
   const [firstEntrance, setFirstEntrance] = useState(true);
-  const [isDownloading, setIsDownloading] = useState(true);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const filter = useCallback((search, isShort, movies) => {
     setNeededMovie(search);
