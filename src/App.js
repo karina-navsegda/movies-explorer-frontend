@@ -99,7 +99,7 @@ function App() {
       .then(() => {
         setSavedMovies(
           savedMovies.filter((movie) => {
-            return movie._id !== movieId;
+            return movie.data._id !== movieId;
           })
         );
       })
