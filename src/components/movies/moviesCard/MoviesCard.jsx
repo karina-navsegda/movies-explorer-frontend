@@ -26,6 +26,8 @@ function MoviesCard({
       setSaved(true);
       console.log("saved");
       saveMovie(movie);
+      console.log(movie.id)
+   
     }
   }
 

@@ -30,7 +30,7 @@ function App() {
       ])
         .then(([dataUser, dataMovies]) => {
           setCurrentUser(dataUser);
-         setSavedMovies(dataMovies)
+         setMovies(dataMovies)
           setIsLogged(true);
           console.log(dataMovies)
           console.log(savedMovies)
