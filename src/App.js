@@ -137,6 +137,7 @@ function App() {
       const savedArray = savedMovies.filter((movie) => {
         return movie.data.movieId === data.id
       })
+      console.log(savedArray)
       handleDeleteMovie(savedArray[0]._id);
     } else {
       console.log(data, localStorage.token);
