@@ -93,6 +93,7 @@ function App() {
   }
 
   function handleDeleteMovie(movieId) {
+    console.log(movieId)
     apiMain
       .deleteMovie(movieId, localStorage.token)
       .then(() => {

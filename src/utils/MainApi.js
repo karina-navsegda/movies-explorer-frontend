@@ -100,7 +100,7 @@ class ApiMain {
 
 
   deleteMovie(movieId, token) {
-    return fetch(`${this._url}/cards/${movieId}`, {
+    return fetch(`${this._url}/movies/${movieId}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
