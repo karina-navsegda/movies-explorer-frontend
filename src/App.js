@@ -139,7 +139,8 @@ function App() {
         return movie.data.movieId === data.id
       })
       console.log(savedArray)
-      handleDeleteMovie(savedArray[0]._id);
+      handleDeleteMovie(savedArray.data._id);
+      console.log(savedArray.data._id);
     } else {
       console.log(data, localStorage.token);
       console.log(isSaved);
