@@ -140,3 +140,5 @@
 @import url(./blocks/error/__title/error__title.css);
 @import url(./blocks/error/error.css);
 
+@import url(./blocks/preloader/Preloader.css);
+

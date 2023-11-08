@@ -10,12 +10,14 @@ import { Error } from "./components/error/Error";
 import apiMain from "./utils/MainApi";
 import apiMovies from "./utils/MoviesApi";
 import CurrentUserContext from "./contexts/CurrentUserContext";
+import Preloader from "./components/preloader/Preloader";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
   const [movies, setMovies] = useState({});
+  const [isTokenChecked, setIsTokenChecked] = useState(true);
   const navigateTo = useNavigate();
 
   useEffect(() => {
@@ -23,6 +25,7 @@ function App() {
       Promise.all([
         apiMain.getProfile(localStorage.token),
         apiMovies.getMovies(localStorage.token),
+        setIsTokenChecked(false),
         setIsLogged(true),
       ])
         .then(([dataUser, dataMovies]) => {
@@ -35,9 +38,11 @@ function App() {
         .catch((err) => {
           console.error(`Ошибка при загрузке данных ${err}`);
           localStorage.clear();
+          setIsTokenChecked(false);
         });
     } else {
       setIsLogged(false);
+      setIsTokenChecked(false)
       localStorage.clear();
     }
   }, [isLogged]);
@@ -120,6 +125,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
+      {isTokenChecked ? <Preloader /> :
         <Routes>
           <Route path="/" element={<Main isLogged={isLogged} />} />
           <Route
@@ -158,6 +164,7 @@ function App() {
           />
           <Route path="*" element={<Error />} />
         </Routes>
+}
       </div>
     </CurrentUserContext.Provider>
   );

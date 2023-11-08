@@ -1,9 +1,10 @@
 import { useLocation } from 'react-router-dom'
 import MoviesCard from '../moviesCard/MoviesCard'
 import { useEffect, useState } from 'react'
+import Preloader from '../../preloader/Preloader'
 
 
-function MoviesCardList({ movies, saveMovie, filteredMovies, deleteMovie, savedMovies, filteredSaved }) {
+function MoviesCardList({ movies, saveMovie, filteredMovies, deleteMovie, savedMovies, filteredSaved, isDownloading }) {
   const { pathname } = useLocation()
   const isSavedMoviesPage = pathname === "/saved-movies";
   const [count, setCount] = useState('')
@@ -58,31 +59,31 @@ function MoviesCardList({ movies, saveMovie, filteredMovies, deleteMovie, savedM
   return (
     <section className="moviesCardList">
       <div className="moviesCardList__grid">
-        {isSavedMoviesPage
-          ? sliceSaved.length > 0 &&
-            sliceSaved.map((data) => (
-              <MoviesCard
-                key={data._id}
-                movie={data}
-                filteredMovies={filteredMovies}
-                saveMovie={saveMovie}
-                deleteMovie={deleteMovie}
-                savedMovies={savedMovies}
-                filteredSaved={filteredSaved}
-              />
-            ))
-          : slice.length > 0 &&
-            slice.map((data) => (
-              <MoviesCard
-                key={data._id}
-                movie={data}
-                filteredMovies={filteredMovies}
-                saveMovie={saveMovie}
-                deleteMovie={deleteMovie}
-                savedMovies={savedMovies}
-                filteredSaved={filteredSaved}
-              />
-            ))}
+        {isDownloading ? <Preloader /> : (
+          isSavedMoviesPage
+            ? sliceSaved.length > 0 && sliceSaved.map((data) => (
+                <MoviesCard
+                  key={data._id}
+                  movie={data}
+                  filteredMovies={filteredMovies}
+                  saveMovie={saveMovie}
+                  deleteMovie={deleteMovie}
+                  savedMovies={savedMovies}
+                  filteredSaved={filteredSaved}
+                />
+              ))
+            : slice.length > 0 && slice.map((data) => (
+                <MoviesCard
+                  key={data._id}
+                  movie={data}
+                  filteredMovies={filteredMovies}
+                  saveMovie={saveMovie}
+                  deleteMovie={deleteMovie}
+                  savedMovies={savedMovies}
+                  filteredSaved={filteredSaved}
+                />
+              ))
+        )}
       </div>
       <button className="moviesCardList__more-btn" onClick={clickMore}>
         Ещё

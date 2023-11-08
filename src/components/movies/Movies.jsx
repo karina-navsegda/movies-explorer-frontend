@@ -14,6 +14,7 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
   const [theMovies, setTheMovies] = useState([]);
   const [isShort, setIsShort] = useState(false);
   const [firstEntrance, setFirstEntrance] = useState(true);
+  const [isDownloading, setIsDownloading] = useState(true);
 
   const filter = useCallback((search, isShort, movies) => {
     setNeededMovie(search);
@@ -40,6 +41,7 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
 
   function searchMovies(search) {
     if (theMovies.length === 0) {
+      setIsDownloading(true)
       apiMovies
       .getMovies()
       .then((res) => {
@@ -52,8 +54,11 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
       })
       .catch((err) => {
         console.error(`Ошибка при поиске ${err}`);
-      });
-  } }
+      })
+      .finally(() => setIsDownloading(false))
+  } else {
+    filter(search, isShort, theMovies)
+  }}
 
    useEffect(() => {
     if (localStorage.theMovies && localStorage.shorts && localStorage.movie) {
@@ -91,6 +96,7 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie }) {
           neededMovie={neededMovie}
           searchMovies={searchMovies}
           savedMovies={savedMovies}
+          isDownloading={isDownloading}
         /> 
       </main>
       <Footer />
