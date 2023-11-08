@@ -104,7 +104,7 @@ function App() {
       .catch((err) => console.error(`Ошибка: не удалось удалить фильм ${err}`));
   }
 
-  function toggleMovie(data) {
+ /*  function toggleMovie(data) {
     const isSaved = savedMovies.some(item => data.id === item.movieId)
     const savedArray = savedMovies.filter((movie) => {
       return movie.movieId === data.id
@@ -123,6 +123,31 @@ function App() {
           console.log(savedMovies)
         })
         .catch((err) => console.error(`Ошибка сохранения фильма ${err}`));
+    }
+  } */
+
+  function toggleMovie(data) {
+    const isSaved = savedMovies.some(item => data.id === item.movieId);
+    
+    if (isSaved) {
+      console.log('deleting');
+      const savedArray = savedMovies.filter(movie => movie.movieId === data.id);
+      handleDeleteMovie(savedArray[0]._id);
+    } else {
+      console.log(data, localStorage.token);
+      console.log(isSaved);
+      
+      // Дополнительная проверка перед сохранением
+      if (!isSaved) {
+        apiMain
+          .saveMovie(data, localStorage.token)
+          .then(res => {
+            setSavedMovies([res, ...savedMovies]);
+            console.log(res);
+            console.log(savedMovies);
+          })
+          .catch(err => console.error(`Ошибка сохранения фильма ${err}`));
+      }
     }
   }
 
