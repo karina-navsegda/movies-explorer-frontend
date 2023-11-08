@@ -162,7 +162,6 @@ function App() {
             path="/movies"
             element={
               <Movies
-                movies={movies}
                 saveMovie={toggleMovie}
                 isLogged={isLogged}
                 deleteMovie={handleDeleteMovie}
