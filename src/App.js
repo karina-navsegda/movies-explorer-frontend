@@ -135,7 +135,7 @@ function App() {
     if (isSaved) {
       console.log('deleting');
       const savedArray = savedMovies.filter((movie) => {
-        return movie.movieId === data.id
+        return movie.data.movieId === data.id
       })
       handleDeleteMovie(savedArray[0]._id);
     } else {
