@@ -17,6 +17,7 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
   const [isTokenChecked, setIsTokenChecked] = useState(true);
+  const [movies, setMovies] = useState([]);
   const navigateTo = useNavigate();
 
   useEffect(() => {
@@ -29,7 +30,8 @@ function App() {
       ])
         .then(([dataUser, dataMovies]) => {
           setCurrentUser(dataUser);
-          setSavedMovies(dataMovies)
+          setMovies(dataMovies);
+         // setSavedMovies(dataMovies)
           setIsLogged(true);
           console.log(dataMovies)
           console.log(savedMovies)
