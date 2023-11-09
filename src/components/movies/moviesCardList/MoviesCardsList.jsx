@@ -11,12 +11,13 @@ function MoviesCardList({
   savedMovies,
   filteredSaved,
   isDownloading,
+  setSavedMovies
 }) {
   const { pathname } = useLocation();
   const isSavedMoviesPage = pathname === "/saved-movies";
   const [count, setCount] = useState("");
   const slice = filteredMovies ? filteredMovies.slice(0, count) : [];
-  const sliceSaved = filteredSaved ? filteredSaved.slice(0, count) : [];
+  const sliceSaved = savedMovies ? savedMovies.slice(0, count) : [];
 
   function printCards() {
     let counter = { init: 12, step: 3 };
@@ -71,26 +72,26 @@ function MoviesCardList({
           sliceSaved.length > 0 &&
           sliceSaved.map((data) => (
             <MoviesCard
-              key={data._id}
               movie={data}
               filteredMovies={filteredMovies}
               saveMovie={saveMovie}
               deleteMovie={deleteMovie}
               savedMovies={savedMovies}
               filteredSaved={filteredSaved}
+              setSavedMovies={setSavedMovies}
             />
           ))
         ) : (
           slice.length > 0 &&
           slice.map((data) => (
             <MoviesCard
-              key={data._id}
               movie={data}
               filteredMovies={filteredMovies}
               saveMovie={saveMovie}
               deleteMovie={deleteMovie}
               savedMovies={savedMovies}
               filteredSaved={filteredSaved}
+              setSavedMovies={setSavedMovies}
             />
           ))
         )}

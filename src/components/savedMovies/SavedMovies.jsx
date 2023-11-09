@@ -4,8 +4,9 @@ import MoviesCardList from "../movies/moviesCardList/MoviesCardsList";
 import Footer from "../footer/Footer"
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
+import { useLocation } from "react-router-dom";
 
-function SavedMovies({savedMovies, deleteMovie, isLogged}) {
+function SavedMovies({ savedMovies, deleteMovie, isLogged }) {
   const [filteredSaved, setFilteredSaved] = useState(savedMovies)
   const [neededMovie, setNeededMovie] = useState('')
   const [isShort, setIsShort] = useState(false)
@@ -14,10 +15,11 @@ function SavedMovies({savedMovies, deleteMovie, isLogged}) {
   const filter = useCallback((search, isShort, movies) => {
     setNeededMovie(search)
     setFilteredSaved(movies.filter((item) => {
-      const searchName = item.nameRU.toLowerCase().includes(search.toLowerCase())
+      const searchName = item.data.nameRU.toLowerCase().includes(search.toLowerCase())
       return isShort ? (searchName && item.duration <= 40) : searchName
     }))
   }, [])
+
 
   function searchMovies(search) {
     setFirstEntrance(false)

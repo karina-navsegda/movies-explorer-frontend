@@ -33,8 +33,6 @@ function App() {
           setMovies(dataMovies);
          // setSavedMovies(dataMovies)
           setIsLogged(true);
-          console.log(dataMovies)
-          console.log(savedMovies)
         })
         .catch((err) => {
           console.error(`Ошибка при загрузке данных ${err}`);
@@ -93,67 +91,30 @@ function App() {
   }
 
   function handleDeleteMovie(movieId) {
-    console.log(movieId)
     apiMain
       .deleteMovie(movieId, localStorage.token)
       .then(() => {
-        setSavedMovies(
-          savedMovies.filter((movie) => {
-            return movie._id !== movieId;
-          })
-        );
+        setSavedMovies(savedMovies.filter(movie => movie.data._id !== movieId));
       })
       .catch((err) => console.error(`Ошибка: не удалось удалить фильм ${err}`));
   }
 
- /*  function toggleMovie(data) {
-    const isSaved = savedMovies.some(item => data.id === item.movieId)
-    const savedArray = savedMovies.filter((movie) => {
-      return movie.movieId === data.id
-    })
-    if (isSaved) {
-      console.log('deleting')
-      handleDeleteMovie(savedArray[0]._id);
-    } else {
-      console.log(data, localStorage.token);
-      console.log(isSaved)
-      apiMain
-        .saveMovie(data, localStorage.token)
-        .then((res) => {
-          setSavedMovies([res, ...savedMovies]);
-          console.log(res)
-          console.log(savedMovies)
-        })
-        .catch((err) => console.error(`Ошибка сохранения фильма ${err}`));
-    }
-  } */
-
   function toggleMovie(data) {
     const isSaved = savedMovies.some(item => data.id === item.data.movieId);
-    console.log('isSaved:', isSaved);
     console.log(savedMovies)
-    console.log(data.id)
     if (isSaved) {
       console.log('deleting');
       const savedArray = savedMovies.filter((movie) => {
         return movie.data.movieId === data.id
       })
-      console.log(savedArray)
       const movieToDelete = savedArray[0].data;
       handleDeleteMovie(movieToDelete._id);
-      console.log(savedArray.data._id);
     } else {
-      console.log(data, localStorage.token);
-      console.log(isSaved);
-      
-      // Дополнительная проверка перед сохранением
       if (!isSaved) {
         apiMain
           .saveMovie(data, localStorage.token)
           .then(res => {
             setSavedMovies([res, ...savedMovies]);
-            console.log(res);
-            console.log(savedMovies);
           })
           .catch(err => console.error(`Ошибка сохранения фильма ${err}`));
       }
@@ -174,13 +135,14 @@ function App() {
                 isLogged={isLogged}
                 deleteMovie={handleDeleteMovie}
                 savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
               />
             }
           />
           <Route
             path="/profile"
             element={
-              <Profile onUpdateUser={handleUpdateUser} logOut={handleLogOut} />
+              <Profile onUpdateUser={handleUpdateUser} logOut={handleLogOut}  isLogged={isLogged}/>
             }
           />
           <Route
@@ -190,14 +152,15 @@ function App() {
                 savedMovies={savedMovies}
                 deleteMovie={handleDeleteMovie}
                 isLogged={isLogged}
-
+                setSavedMovies={setSavedMovies}
               />
             }
           />
           <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route
             path="/signup"
-            element={<Register onRegister={handleRegister} />}
+            element={<Register onRegister={handleRegister} 
+            />}
           />
           <Route path="*" element={<Error />} />
         </Routes>

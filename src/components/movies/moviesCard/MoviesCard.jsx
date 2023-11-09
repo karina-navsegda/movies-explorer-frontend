@@ -8,17 +8,20 @@ function MoviesCard({
   filteredMovies,
   deleteMovie,
   savedMovies,
+  setSavedMovies
 }) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
 
   useEffect(() => {
-    if (location === "/movies")
-      setSaved(savedMovies.some((element) => movie.id === element.movieId));
-  }, [savedMovies, movie.id, setSaved, location]);
+    if (location === '/movies')
+      setSaved(savedMovies.some(element => movie.id === element.movieId))
+  }, [savedMovies, movie.id, setSaved, location])
 
   function handleSave() {
-    if (savedMovies.some((element) => movie.id === element.movieId)) {
+    if (savedMovies.some((element) => movie.id === element.data.movieId)) {
+      console.log(savedMovies)
+      console.log(movie)
       setSaved(false);
       console.log("not saved");
       saveMovie(movie);
@@ -27,9 +30,10 @@ function MoviesCard({
       console.log("saved");
       saveMovie(movie);
       console.log(movie.id)
-   
+      console.log(savedMovies)
     }
-  }
+  } 
+
 
   return (
     <div className="moviesCardList__card">

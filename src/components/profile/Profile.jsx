@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import Header from "../header/Header";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Profile({ onUpdateUser, logOut }) {
+function Profile({ onUpdateUser, logOut, isLogged }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -36,7 +36,7 @@ function Profile({ onUpdateUser, logOut }) {
 
   return (
     <>
-      <Header />
+      <Header  isLogged={isLogged}/>
       <main className="main">
         <section className="profile">
           <form className="profile__form" name="edit__form" method="post" onSubmit={handleSubmit}>
