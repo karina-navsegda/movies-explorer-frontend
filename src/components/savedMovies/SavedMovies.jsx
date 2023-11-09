@@ -51,9 +51,10 @@ function SavedMovies({ savedMovies, deleteMovie, isLogged }) {
              setIsShort={setIsShort}
         />
          <MoviesCardList 
-               movies={filteredSaved}
+               filteredMovies={filteredSaved}
                deleteMovie={deleteMovie}
                firstEntrance={firstEntrance}
+             //  movies={filteredSaved}
          /> 
         </main>
         <Footer />

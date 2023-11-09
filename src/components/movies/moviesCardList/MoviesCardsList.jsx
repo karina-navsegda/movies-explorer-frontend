@@ -14,10 +14,8 @@ function MoviesCardList({
   setSavedMovies
 }) {
   const { pathname } = useLocation();
-  const isSavedMoviesPage = pathname === "/saved-movies";
   const [count, setCount] = useState("");
   const slice = filteredMovies ? filteredMovies.slice(0, count) : [];
-  const sliceSaved = savedMovies ? savedMovies.slice(0, count) : [];
 
   function printCards() {
     let counter = { init: 12, step: 3 };
@@ -41,11 +39,12 @@ function MoviesCardList({
   }
 
   useEffect(() => {
-    if (pathname === "/movies") {
+    if (pathname === "/movies" || pathname === "/saved-movies") {
       setCount(printCards().init);
       function printCardsForResize() {
         if (window.innerWidth >= 1280) {
           setCount(12);
+          console.log(filteredSaved)
         }
         if (window.innerWidth < 1280 && window.innerWidth >= 768) {
           setCount(12);
@@ -68,19 +67,6 @@ function MoviesCardList({
       <div className="moviesCardList__grid">
         {isDownloading ? (
           <Preloader />
-        ) : isSavedMoviesPage ? (
-          sliceSaved.length > 0 &&
-          sliceSaved.map((data) => (
-            <MoviesCard
-              movie={data}
-              filteredMovies={filteredMovies}
-              saveMovie={saveMovie}
-              deleteMovie={deleteMovie}
-              savedMovies={savedMovies}
-              filteredSaved={filteredSaved}
-              setSavedMovies={setSavedMovies}
-            />
-          ))
         ) : (
           slice.length > 0 &&
           slice.map((data) => (

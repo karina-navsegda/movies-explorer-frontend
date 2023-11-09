@@ -12,6 +12,7 @@ function MoviesCard({
 }) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
+  const isSavedMoviesPage = location.pathname === "/saved-movies";
 
   useEffect(() => {
     if (location === '/movies')
@@ -40,13 +41,13 @@ function MoviesCard({
       <div className="moviesCardList__img-block">
         <img
           className="moviesCardList__img"
-          src={`https://api.nomoreparties.co${movie.image.url}`}
+          src={isSavedMoviesPage ? movie.data.image : `https://api.nomoreparties.co${movie.image.url}`}
           alt={movie.nameRU}
         />
         {location.pathname === "/saved-movies" ? (
           <button
             className="moviesCardList__btn-delete"
-            onClick={deleteMovie}
+            onClick={() => deleteMovie(movie.data._id)}
           ></button>
         ) : isSaved ? (
           <button
@@ -60,8 +61,8 @@ function MoviesCard({
         )}
       </div>
       <div className="moviesCardList__text">
-        <p className="moviesCardList__name">{movie.nameRU}</p>
-        <div className="moviesCardList__duration">{movie.duration}</div>
+        <p className="moviesCardList__name">{isSavedMoviesPage ? movie.data.nameRU : movie.nameRU}</p>
+        <div className="moviesCardList__duration">{isSavedMoviesPage ? movie.data.duration : movie.duration}</div>
       </div>
     </div>
   );

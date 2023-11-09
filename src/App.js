@@ -11,6 +11,7 @@ import apiMain from "./utils/MainApi";
 import apiMovies from "./utils/MoviesApi";
 import CurrentUserContext from "./contexts/CurrentUserContext";
 import Preloader from "./components/preloader/Preloader";
+import ProtectedRoute from "./components/protectedRoute/ProtectedRoute"
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -87,7 +88,7 @@ function App() {
   function handleLogOut() {
     localStorage.removeItem("token");
     setIsLogged(false);
-    navigateTo("/signin");
+    navigateTo("/");
   }
 
   function handleDeleteMovie(movieId) {
