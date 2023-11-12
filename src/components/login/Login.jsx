@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../images/logo.svg";
 
-export function Login({ onLogin }) {
+export function Login({ onLogin, isLogged }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,23 +10,33 @@ export function Login({ onLogin }) {
   const [passwordError, setPasswordError] = useState("");
 
   const [isValid, setIsValid] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  useEffect(() => {
+    if (isTouched) {
+      validateForm();
+    }
+  }, [email, password, isTouched]);
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
     validateForm();
+    setIsTouched(true);
   }
 
   function handlePasswordChange(e) {
     setPassword(e.target.value);
     validateForm();
+    setIsTouched(true);
   }
 
   function validateForm() {
-    setIsValid(true); // Reset isValid at the start of validation
+    setIsValid(true); 
     setEmailError("");
     setPasswordError("");
 
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
+    if (!emailRegex.test(email)) {
       setIsValid(false);
       setEmailError("Неправильный формат электронной почты.");
     }
@@ -35,6 +45,8 @@ export function Login({ onLogin }) {
       setIsValid(false);
       setPasswordError("Пароль должен содержать от 5 до 20 символов.");
     }
+
+   // if (isLogged !== "true");
   }
 
   function handleSubmitClick(e) {

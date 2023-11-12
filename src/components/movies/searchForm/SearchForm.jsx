@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import searchIcon from "../../../images/search-2.svg";
 
 function SearchForm({
@@ -11,7 +11,14 @@ function SearchForm({
   setIsShort,
 }) {
   const [film, setFilm] = useState("");
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState((localStorage.getItem("shorts")));
+
+  useEffect(() => {
+    const lastSearchedMovie = localStorage.getItem("movie");
+    if (lastSearchedMovie) {
+      setFilm(JSON.parse(lastSearchedMovie));
+    }
+  }, [isToggled]);
 
   function onSubmit(evt) {
     evt.preventDefault();
@@ -33,6 +40,14 @@ function SearchForm({
     }
   }
 
+  function handleInputChange(e) {
+    setFilm(e.target.value);
+  }
+
+  function handleChangeShort(e) {
+    setIsToggled((localStorage.getItem("shorts")))
+  }
+
   return (
     <section className="searchForm">
       <div className="searchForm__line">
@@ -51,8 +66,8 @@ function SearchForm({
                 name="film"
                 id="film"
                 required
-                //   value={film}
-                // onChange={(e) => setFilm(e.target.value)}
+                value={film}
+                onChange={handleInputChange}
               />
             </div>
             <button className="searchForm__search-btn" type="submit">

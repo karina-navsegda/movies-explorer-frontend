@@ -25,7 +25,7 @@ function MoviesCardList({
 
     if (window.innerWidth < maxScreen) {
       counter.init = 12;
-      counter.step = 4;
+      counter.step = 3;
     }
     if (window.innerWidth < mediumScreen) {
       counter.init = 12;
@@ -82,9 +82,11 @@ function MoviesCardList({
           ))
         )}
       </div>
-      <button className="moviesCardList__more-btn" onClick={clickMore}>
-        Ещё
-      </button>
+      {filteredMovies && filteredMovies.length > count && (
+        <button className="moviesCardList__more-btn" onClick={clickMore}>
+          Ещё
+        </button>
+      )}
     </section>
   );
 }

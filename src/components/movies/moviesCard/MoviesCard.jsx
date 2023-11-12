@@ -15,8 +15,8 @@ function MoviesCard({
   const isSavedMoviesPage = location.pathname === "/saved-movies";
 
   useEffect(() => {
-    if (location === '/movies')
-      setSaved(savedMovies.some(element => movie.id === element.movieId))
+    if (location.pathname === '/movies')
+      setSaved(savedMovies.some(element => movie.id === element.data.movieId))
   }, [savedMovies, movie.id, setSaved, location])
 
   function handleSave() {

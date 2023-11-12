@@ -39,6 +39,7 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie, setSavedMovies 
     }))
   }, []);
 
+
   function searchMovies(search) {
     if (theMovies.length === 0) {
       setIsDownloading(true)
@@ -60,18 +61,21 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie, setSavedMovies 
     filter(search, isShort, theMovies)
   }}
 
-   useEffect(() => {
+ useEffect(() => {
+  if (isLogged) {
     if (localStorage.theMovies && localStorage.shorts && localStorage.movie) {
-      const movies = JSON.parse(localStorage.theMovies)
-      const search = JSON.parse(localStorage.movie)
-      const isShort = JSON.parse(localStorage.shorts)
-      setFirstEntrance(false)
-      setNeededMovie(search)
-      setIsShort(isShort)
-      setTheMovies(movies)
-      filter(search, isShort, movies)
+      const movies = JSON.parse(localStorage.theMovies);
+      const search = JSON.parse(localStorage.movie);
+      const isShort = JSON.parse(localStorage.shorts);
+
+      setFirstEntrance(false);
+      setNeededMovie(search);
+      setIsShort(isShort);
+      setTheMovies(movies);
+      filter(search, isShort, movies);
     }
-  }, [filter]) 
+  } 
+}, [filter, isLogged]);
 
   return (
     <>
@@ -90,6 +94,7 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie, setSavedMovies 
         /> 
         <MoviesCardList
           filteredMovies={filteredMovies}
+          setFilteredMovies={setFilteredMovies}
           movies={theMovies}
           saveMovie={saveMovie}
           deleteMovie={deleteMovie}
