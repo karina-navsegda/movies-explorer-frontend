@@ -15,25 +15,24 @@ function MoviesCard({
   const isSavedMoviesPage = location.pathname === "/saved-movies";
 
   useEffect(() => {
-    if (location.pathname === '/movies')
-      setSaved(savedMovies.some(element => movie.id === element.data.movieId))
-  }, [savedMovies, movie.id, setSaved, location])
+    const savedState = localStorage.getItem(`isSaved-${movie.id}`);
+    if (savedState) {
+      setSaved(savedState === 'true');
+    }
+  }, [movie.id]);
 
   function handleSave() {
-    if (savedMovies.some((element) => movie.id === element.data.movieId)) {
-      console.log(savedMovies)
-      console.log(movie)
+    if (isSaved) {
       setSaved(false);
-      console.log("not saved");
       saveMovie(movie);
+      localStorage.setItem(`isSaved-${movie.id}`, 'false');
     } else {
       setSaved(true);
-      console.log("saved");
       saveMovie(movie);
-      console.log(movie.id)
-      console.log(savedMovies)
+      localStorage.setItem(`isSaved-${movie.id}`, 'true');
     }
   } 
+
 
 
   return (
