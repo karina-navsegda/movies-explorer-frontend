@@ -7,28 +7,25 @@ function Profile({ onUpdateUser, logOut, isLogged }) {
   const [email, setEmail] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [hasChanges, setHasChanged] = useState(true);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
-  }, [currentUser]);
+  }, [currentUser, isEditing, hasChanges]);
 
   function handleNameChange(e) {
     const newValue = e.target.value;
-    if (newValue !== name) {
-        setName(newValue);
-        setHasChanged(true);
-    }
+    setName(newValue);
+    setHasChanged(newValue !== currentUser.name || email !== currentUser.email);
 }
 
 function handleEmailChange(e) {
-    const newValue = e.target.value;
-    if (newValue !== email) {
-        setEmail(newValue);
-        setHasChanged(true);
-    }
+  const newValue = e.target.value;
+  setEmail(newValue);
+  setHasChanged(name !== currentUser.name || newValue !== currentUser.email);
 }
 
   function handleSubmit(e) {
@@ -38,6 +35,8 @@ function handleEmailChange(e) {
         name,
         email,
       });
+      setSuccessMessage("Профиль успешно обновлен");
+      ;
       setHasChanged(false); 
      setIsEditing(false)
     }
@@ -96,14 +95,14 @@ function handleEmailChange(e) {
             <div className="profile__btns">
             <button
     type="submit"
-    className={`profile__edit-btn ${isEditing ? "profile__edit-btn_save"  : ""}`}
+    className={`profile__edit-btn ${isEditing ? "profile__edit-btn_save" : ""}`}
     disabled={isEditing ? !hasChanges : ""}
     onClick={isEditing ? handleSubmit : handleEditClick}
 >
     {isEditing ? "Сохранить" : "Редактировать"}
+    {successMessage && <p className="me__about">{successMessage}</p>}
 </button>
-
-              {isEditing ? null : (
+{isEditing ? null : (
                 <button className="profile__edit-btn profile__edit-btn_red" onClick={logOut}>
                   Выйти из аккаунта
                 </button>
@@ -115,5 +114,6 @@ function handleEmailChange(e) {
     </>
   );
 }
+
 
 export default Profile;
