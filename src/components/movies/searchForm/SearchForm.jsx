@@ -11,20 +11,22 @@ function SearchForm({
   setIsShort,
 }) {
   const [film, setFilm] = useState("");
-  const [isToggled, setIsToggled] = useState((localStorage.getItem("shorts")));
+  const [isToggled, setIsToggled] = useState(
+    localStorage.getItem("shorts") === "true" 
+  );
 
   useEffect(() => {
     const lastSearchedMovie = localStorage.getItem("movie");
     if (lastSearchedMovie) {
       setFilm(JSON.parse(lastSearchedMovie));
     }
-  }, [isToggled]);
+  }, []);
 
   function onSubmit(evt) {
     evt.preventDefault();
     if (evt.target.film.value) {
       searchMovies(evt.target.film.value);
-      console.log("чето прорисходит");
+      console.log("чето происходит");
     }
   }
 
@@ -38,14 +40,11 @@ function SearchForm({
       setIsToggled(true);
       filter(film, true, movies);
     }
+    localStorage.setItem("shorts", isToggled.toString()); 
   }
 
   function handleInputChange(e) {
     setFilm(e.target.value);
-  }
-
-  function handleChangeShort(e) {
-    setIsToggled((localStorage.getItem("shorts")))
   }
 
   return (
