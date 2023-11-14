@@ -1,0 +1,22 @@
+.about__subtext {
+  color: #a0a0a0;
+  text-align: center;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px; /* 121.429% */
+  padding: 0;
+  margin: 0;
+}
+@media screen and (max-width: 768px) {
+    .about__subtext {
+        font-weight: 400;
+      }
+}
+@media screen and (max-width: 320px) {
+    .about__subtext {
+        font-size: 11px;
+        line-height: 13px;
+      }
+}

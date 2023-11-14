@@ -1,0 +1,21 @@
+.nav__content {
+    position: fixed;
+  top: 0;
+  right: 0;
+  width: 520px;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 1;
+  display: flex;
+justify-content: flex-start;  
+max-width: 80%;
+flex-direction: column;
+align-items: center;
+}
+
+@media screen and (max-width: 320px) {
+    .nav__content{
+   max-width: 100%;
+   
+      }
+  }

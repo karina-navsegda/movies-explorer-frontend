@@ -1,0 +1,29 @@
+.moviesCardList__more-btn {
+  color: #000;
+text-align: center;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+background-color: #F9F9F9;
+border-radius: 6px;
+padding: 11px 0 9px ;
+margin: 50px auto 80px;
+border: none;
+cursor: pointer;
+max-width: 90%;
+width: 320px;
+}
+
+@media screen and (max-width: 520px) {
+  .moviesCardList__more-btn {
+  width: 240px;
+  padding: 11px 0;
+  margin: 60px auto 80px;
+    }
+}
+
+.moviesCardList__more-btn:hover {
+  opacity: 0.7;
+}

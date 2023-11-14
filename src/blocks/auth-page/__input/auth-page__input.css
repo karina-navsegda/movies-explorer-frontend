@@ -1,0 +1,17 @@
+.auth-page__input {
+    border-radius: 8px;
+background: #F9F9F9;
+border: 0;
+padding: 15px;
+color: #000;
+font-family: 'Inter', 'Arial', sans-serif;
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom: 20px;
+}
+
+.auth-page__input:last-of-type {
+    margin-bottom: 0;
+}

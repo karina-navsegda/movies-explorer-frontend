@@ -1,0 +1,13 @@
+.profile__fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+  margin-bottom: 220px;
+}
+
+@media screen and (max-width: 320px) {
+  .profile__fieldset {
+   margin-bottom: 379px;
+  }
+}

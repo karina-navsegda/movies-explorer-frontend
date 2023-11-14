@@ -1,0 +1,55 @@
+.profile__edit-btn_save {
+    width: 100%;
+    color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border-radius: 3px;
+background: #3456F3;
+padding: 13px 0 15px;
+border: none;
+margin-bottom: 16px;
+text-decoration: none;
+width: 410px;
+}
+
+.profile__edit-btn_save:disabled {
+    width: 100%;
+    color: #C2C2C2;
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border-radius: 3px;
+background: #F8F8F8;
+padding: 13px 0 15px;
+border: none;
+margin-bottom: 16px;
+text-decoration: none;
+width: 410px;
+cursor: default;
+}
+
+.profile__edit-btn_save:disabled:hover{
+    opacity: 100;
+
+}
+
+@media screen and (max-width: 768px) {
+    .profile__edit-btn_save {
+       font-size: 14px;
+      }
+}
+
+
+@media screen and (max-width: 320px) {
+    .profile__edit-btn_save {
+       font-size: 12px;
+       
+      }
+}

@@ -1,0 +1,18 @@
+.about__timeline-clear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 35px;
+  width: 80%;
+}
+@media screen and (max-width: 768px) {
+    .about__timeline-clear {
+        width: 528px;
+      }
+}
+@media screen and (max-width: 320px) {
+    .about__timeline-clear {
+        width: 184px;
+      }
+}

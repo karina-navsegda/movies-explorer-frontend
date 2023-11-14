@@ -1,0 +1,16 @@
+.auth-page__form-btn_disabled {
+    border-radius: 3px;
+background: #F8F8F8;
+color: #C2C2C2;
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+width: 100%;
+padding: 13px 0 15px;
+border: none;
+margin-bottom: 16px;
+text-decoration: none;
+}
