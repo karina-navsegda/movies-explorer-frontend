@@ -18,21 +18,17 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
   const [isTokenChecked, setIsTokenChecked] = useState(true);
-  const [movies, setMovies] = useState([]);
   const navigateTo = useNavigate();
 
   useEffect(() => {
     if (localStorage.token) {
       Promise.all([
         apiMain.getProfile(localStorage.token),
-        apiMovies.getMovies(localStorage.token),
         setIsTokenChecked(false),
         setIsLogged(true),
       ])
-        .then(([dataUser, dataMovies]) => {
+        .then(([dataUser]) => {
           setCurrentUser(dataUser);
-          setMovies(dataMovies);
-         // setSavedMovies(dataMovies)
           setIsLogged(true);
         })
         .catch((err) => {

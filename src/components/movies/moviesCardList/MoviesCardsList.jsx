@@ -11,7 +11,8 @@ function MoviesCardList({
   savedMovies,
   filteredSaved,
   isDownloading,
-  setSavedMovies
+  setSavedMovies,
+  moviesToRender
 }) {
   const { pathname } = useLocation();
   const [count, setCount] = useState("");

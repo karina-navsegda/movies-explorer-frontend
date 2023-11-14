@@ -2,31 +2,29 @@ import { useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import SavedMovies from "../../savedMovies/SavedMovies";
-import apiMain from "../../../utils/MainApi";
 
 function MoviesCard({
   movie,
   saveMovie,
   filteredMovies,
   deleteMovie,
-  savedMovies,
-  setSavedMovies, 
+  moviesToRender
 }) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
 
   useEffect(() => {
     if (location.pathname === '/movies') {
-      apiMain.getMovies(localStorage.token)
-        .then((dataMovies) => {
-          const isMovieSaved = dataMovies.some(element => movie.nameRU === element.nameRU);
-          setSaved(isMovieSaved);
-        })
-        .catch((error) => {
-          console.error('Error fetching saved movies:', error);
-        });
+      try {
+        const moviesLocal = JSON.parse(localStorage.movieCard);
+        const isMovieSaved = moviesLocal.some(element => movie.nameRU === element.nameRU);
+   
+        setSaved(isMovieSaved);
+      } catch (error) {
+        console.error('Error checking if movie is saved:', error);
+      }
     }
-  }, [movie.id, setSaved, location.pathname]);
+  }, [moviesToRender, movie.nameRU, setSaved, location.pathname]);
 
 
   function handleSave() {
