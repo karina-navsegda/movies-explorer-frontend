@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import SavedMovies from "../../savedMovies/SavedMovies";
+import apiMain from "../../../utils/MainApi";
 
 function MoviesCard({
   movie,
@@ -8,45 +10,54 @@ function MoviesCard({
   filteredMovies,
   deleteMovie,
   savedMovies,
-  setSavedMovies
+  setSavedMovies, 
 }) {
   const location = useLocation();
   const [isSaved, setSaved] = useState(false);
-  const isSavedMoviesPage = location.pathname === "/saved-movies";
 
   useEffect(() => {
-    const savedState = localStorage.getItem(`isSaved-${movie.id}`);
-    if (savedState) {
-      setSaved(savedState === 'true');
+    if (location.pathname === '/movies') {
+      apiMain.getMovies(localStorage.token)
+        .then((dataMovies) => {
+          const isMovieSaved = dataMovies.some(element => movie.nameRU === element.nameRU);
+          setSaved(isMovieSaved);
+        })
+        .catch((error) => {
+          console.error('Error fetching saved movies:', error);
+        });
     }
-  }, [movie.id]);
+  }, [movie.id, setSaved, location.pathname]);
+
 
   function handleSave() {
+    const savedMovies = JSON.parse(localStorage.getItem("savedMovies")) || [];
+  
     if (isSaved) {
+      const updatedSavedMovies = savedMovies.filter((savedMovie) => savedMovie.id !== movie.id);
       setSaved(false);
       saveMovie(movie);
-      localStorage.setItem(`isSaved-${movie.id}`, 'false');
+      localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
     } else {
+      const updatedSavedMovies = [...savedMovies, movie];
       setSaved(true);
       saveMovie(movie);
-      localStorage.setItem(`isSaved-${movie.id}`, 'true');
+      localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
     }
-  } 
-
-
+  }
+ 
 
   return (
     <div className="moviesCardList__card">
       <div className="moviesCardList__img-block">
-        <img
+          <img
           className="moviesCardList__img"
-          src={isSavedMoviesPage ? movie.data.image : `https://api.nomoreparties.co${movie.image.url}`}
+          src={location.pathname === '/movies' ? `https://api.nomoreparties.co${movie.image.url}` : movie.image}
           alt={movie.nameRU}
         />
         {location.pathname === "/saved-movies" ? (
           <button
             className="moviesCardList__btn-delete"
-            onClick={() => deleteMovie(movie.data._id)}
+            onClick={() => deleteMovie(movie._id)}
           ></button>
         ) : isSaved ? (
           <button
@@ -59,9 +70,9 @@ function MoviesCard({
           </button>
         )}
       </div>
-      <div className="moviesCardList__text">
-        <p className="moviesCardList__name">{isSavedMoviesPage ? movie.data.nameRU : movie.nameRU}</p>
-        <div className="moviesCardList__duration">{isSavedMoviesPage ? movie.data.duration : movie.duration}</div>
+       <div className="moviesCardList__text">
+        <p className="moviesCardList__name">{ movie.nameRU }</p>
+        <div className="moviesCardList__duration">{ movie.duration }</div>
       </div>
     </div>
   );

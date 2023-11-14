@@ -48,13 +48,11 @@ function App() {
   }, [isLogged]);
 
   function handleLogin({ email, password }) {
-    console.log(email, password);
     apiMain
       .login(email, password)
       .then((res) => {
         localStorage.setItem("token", res.token);
         setIsLogged(true);
-        console.log(res.token);
         navigateTo("/movies");
       })
       .catch((err) => {
@@ -63,7 +61,6 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
-    console.log(name, email, password);
     apiMain
       .register(name, email, password)
       .then((res) => {
@@ -95,16 +92,14 @@ function App() {
     apiMain
       .deleteMovie(movieId, localStorage.token)
       .then(() => {
-        setSavedMovies(savedMovies.filter(movie => movie.data._id !== movieId));
+        setSavedMovies(savedMovies.filter(movie => movie._id !== movieId));
       })
       .catch((err) => console.error(`Ошибка: не удалось удалить фильм ${err}`));
   }
 
   function toggleMovie(data) {
     const isSaved = savedMovies.some(item => data.id === item.data.movieId);
-    console.log(savedMovies)
     if (isSaved) {
-      console.log('deleting');
       const savedArray = savedMovies.filter((movie) => {
         return movie.data.movieId === data.id
       })

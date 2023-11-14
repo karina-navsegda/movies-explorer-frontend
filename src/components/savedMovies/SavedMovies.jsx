@@ -5,36 +5,59 @@ import Footer from "../footer/Footer"
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { useLocation } from "react-router-dom";
+import apiMain from "../../utils/MainApi";
 
 function SavedMovies({ savedMovies, deleteMovie, isLogged }) {
-  const [filteredSaved, setFilteredSaved] = useState(savedMovies)
-  const [neededMovie, setNeededMovie] = useState('')
-  const [isShort, setIsShort] = useState(false)
-  const [firstEntrance, setFirstEntrance] = useState(true)
+  const [isShort, setIsShort] = useState(false);
+  const [firstEntrance, setFirstEntrance] = useState(true);
+  const [moviesToRender, setMoviesToRender] = useState([]);
+  const [neededMovie, setNeededMovie] = useState('');
+  const [filteredSaved, setFilteredSaved] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
 
-  const filter = useCallback((search, isShort, movies) => {
-    setNeededMovie(search)
-    setFilteredSaved(movies.filter((item) => {
-      const searchName = item.data.nameRU.toLowerCase().includes(search.toLowerCase())
-      return isShort ? (searchName && item.duration <= 40) : searchName
-    }))
-  }, [])
-
-
-  function searchMovies(search) {
-    setFirstEntrance(false)
-    filter(search, isShort, savedMovies)
-  }
+  const filter = (search, isShort, moviesToRender) => {
+    setNeededMovie(search);
+    setFilteredSaved(moviesToRender.filter((item) => {
+      const searchName = item.nameRU.toLowerCase().includes(search.toLowerCase());
+      return isShort ? (searchName && item.duration <= 40) : searchName;
+    }));
+  };
 
   useEffect(() => {
-    if (savedMovies.length === 0) {
-      setFirstEntrance(true)
-    } else {
-      setFirstEntrance(false)
+    apiMain.getMovies(localStorage.token)
+      .then((dataMovies) => {
+        setMoviesToRender(dataMovies);
+      })
+      .catch((error) => {
+        console.error('Error fetching saved movies:', error);
+      });
+  }, [deleteMovie,]);
+ 
+
+  useEffect(() => {
+    const handleFilter = () => {
+      setFilteredSaved(moviesToRender.filter((item) => {
+        const searchName = item.nameRU.toLowerCase().includes(neededMovie.toLowerCase());
+        return isShort ? (searchName && item.duration <= 40) : searchName;
+      }));
+    };
+    if (isSearching) {
+      handleFilter();
     }
-    filter(neededMovie, isShort, savedMovies)
-    console.log(neededMovie, isShort, savedMovies)
-  }, [filter, savedMovies, isShort, neededMovie])
+  }, [isSearching, moviesToRender, neededMovie, isShort]); 
+
+  function searchMovies(search) {
+    setNeededMovie(search);
+    setIsSearching(true);
+    localStorage.setItem("movieSaved", JSON.stringify(search));
+    filter(search, isShort, moviesToRender);
+  }
+
+ /*  useEffect(() => {
+      if (localStorage.movieSaved) {
+        setMoviesToRender(JSON.parse(localStorage.theMoviesSaved));
+      }
+  }, [filter]); */
 
     return (
       <>
@@ -50,12 +73,11 @@ function SavedMovies({ savedMovies, deleteMovie, isLogged }) {
              filter={filter}
              setIsShort={setIsShort}
         />
-         <MoviesCardList 
-               filteredMovies={filteredSaved}
-               deleteMovie={deleteMovie}
-               firstEntrance={firstEntrance}
-             //  movies={filteredSaved}
-         /> 
+       <MoviesCardList 
+  filteredMovies={isSearching ? filteredSaved : moviesToRender}
+  deleteMovie={deleteMovie}
+  firstEntrance={firstEntrance}
+/>
         </main>
         <Footer />
       </>

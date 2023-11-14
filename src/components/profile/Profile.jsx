@@ -43,9 +43,7 @@ function handleEmailChange(e) {
   }
 
   const handleEditClick = () => {
-    console.log("Edit button clicked");
     setIsEditing(true);
-    console.log(isEditing)
     setHasChanged(false)
   };
 

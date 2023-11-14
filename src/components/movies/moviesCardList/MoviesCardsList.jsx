@@ -16,47 +16,67 @@ function MoviesCardList({
   const { pathname } = useLocation();
   const [count, setCount] = useState("");
   const slice = filteredMovies ? filteredMovies.slice(0, count) : [];
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  function printCards() {
-    let counter = { init: 12, step: 3 };
-    const maxScreen = 1280;
-    const mediumScreen = 768;
-    const smallScreen = 480;
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-    if (window.innerWidth < maxScreen) {
-      counter.init = 12;
-      counter.step = 3;
-    }
-    if (window.innerWidth < mediumScreen) {
-      counter.init = 12;
-      counter.step = 3;
-    }
-    if (window.innerWidth < smallScreen) {
-      counter.init = 5;
-      counter.step = 2;
-    }
-    return counter;
-  }
+    const debouncedHandleResize = debounce(handleResize, 300);
+
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return () => {
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    setCount(printCards().init);
+  }, [windowWidth, filteredMovies]);
 
   useEffect(() => {
     if (pathname === "/movies" || pathname === "/saved-movies") {
       setCount(printCards().init);
-      function printCardsForResize() {
-        if (window.innerWidth >= 1280) {
-          setCount(12);
-          console.log(filteredSaved)
-        }
-        if (window.innerWidth < 1280 && window.innerWidth >= 768) {
-          setCount(12);
-        }
-        if (window.innerWidth < 768) {
-          setCount(5);
-        }
-      }
-      window.addEventListener("resize", printCardsForResize);
-      return () => window.removeEventListener("resize", printCardsForResize);
     }
   }, [pathname, movies]);
+
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  function printCards() {
+    let counter = { init: 12, step: 3, cardsInRow: 4 };
+    const maxScreen = 1280;
+    const mediumScreen = 800;
+    const smallScreen = 480;
+
+    if (windowWidth < maxScreen) {
+      counter.init = 12;
+      counter.step = 3;
+      counter.cardsInRow = 4;
+    }
+    if (windowWidth < mediumScreen) {
+      counter.init = 8;
+      counter.step = 2;
+      counter.cardsInRow = 3;
+    }
+    if (windowWidth < smallScreen) {
+      counter.init = 5;
+      counter.step = 2;
+      counter.cardsInRow = 2;
+    }
+    return counter;
+  }
 
   function clickMore() {
     setCount(count + printCards().step);

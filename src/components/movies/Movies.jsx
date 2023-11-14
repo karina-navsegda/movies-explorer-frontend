@@ -18,7 +18,6 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie, setSavedMovies 
 
   const filter = useCallback((search, isShort, movies) => {
     setNeededMovie(search);
-    console.log(search, isShort, movies)
     localStorage.setItem("movie", JSON.stringify(search));
     localStorage.setItem("shorts", JSON.stringify(isShort));
     localStorage.setItem("theMovies", JSON.stringify(movies));
@@ -30,7 +29,6 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie, setSavedMovies 
         return isShort ? searchName && item.duration <= 40 : searchName;
       })
     );
-    console.log(filteredMovies);
     console.log(movies.filter((item) => {
       const searchName = item.nameRU
         .toLowerCase()
@@ -50,8 +48,6 @@ function Movies({ savedMovies, isLogged, saveMovie, deleteMovie, setSavedMovies 
         setIsShort(false);
         setFirstEntrance(false);
         filter(search, isShort, res); 
-        console.log(res);
-        console.log(search);
       })
       .catch((err) => {
         console.error(`Ошибка при поиске ${err}`);

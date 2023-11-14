@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import searchIcon from "../../../images/search-2.svg";
+import { useLocation } from "react-router-dom";
 
 function SearchForm({
   isShort,
@@ -14,11 +15,23 @@ function SearchForm({
   const [isToggled, setIsToggled] = useState(
     localStorage.getItem("shorts") === "true" 
   );
+  const location = useLocation();
 
   useEffect(() => {
-    const lastSearchedMovie = localStorage.getItem("movie");
-    if (lastSearchedMovie) {
-      setFilm(JSON.parse(lastSearchedMovie));
+    if (location.pathname === '/movies') {
+      const lastSearchedMovie = localStorage.getItem('movie');
+      if (lastSearchedMovie) {
+        setFilm(JSON.parse(lastSearchedMovie));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (location.pathname === '/saved-movies') {
+      const lastSearchedMovie = localStorage.getItem('movieSaved');
+      if (lastSearchedMovie) {
+        setFilm(JSON.parse(lastSearchedMovie));
+      }
     }
   }, []);
 
@@ -26,7 +39,6 @@ function SearchForm({
     evt.preventDefault();
     if (evt.target.film.value) {
       searchMovies(evt.target.film.value);
-      console.log("чето происходит");
     }
   }
 
